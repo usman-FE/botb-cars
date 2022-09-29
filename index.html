@@ -507,20 +507,60 @@
         ALL CARS BRAND NEW
       </h1>
       <!-- TIMER -->
-      <div>
-        <div
-          class="w-full max-w-[300px] sm:max-w-[380px] mb-4 mx-auto bg-transparent md:bg-[#E7E7E7] overflow-hidden rounded-md flex items-center justify-center">
+      <div
+        class="w-full max-w-[300px] sm:max-w-[380px] mb-4 mx-auto overflow-hidden rounded-md bg-transparent md:bg-[#E7E7E7]">
+        <div class="flex items-center justify-center" x-data="{
+          init(){
+            this.startTimer();
+          },
+          countDate: '',
+          nowDate: '',
+          gap: '',
+          seconds: '',
+          minutes: '',
+          hour: '',
+          day: '',
+          finalDay: '0',
+          finalHour: '0',
+          finalMinutes: '0',
+          finalSeconds: '0',
+          endTimer: '',
+          countdown(){
+            this.countDate = new Date('October 4, 2022 20:02:00').getTime();
+            this.nowDate = new Date().getTime();
+            this.gap = this.countDate - this.nowDate;
+            
+            if(this.gap < 0 || this.gap === '') return;
+
+            this.seconds = 1000;
+            this.minutes = this.seconds * 60;
+            this.hour = this.minutes * 60;
+            this.day = this.hour * 24;
+
+            this.finalDay = Math.floor(this.gap / this.day).toString();
+            this.finalHour = Math.floor((this.gap % this.day) / this.hour).toString();
+            this.finalMinutes = Math.floor((this.gap % this.hour) / this.minutes).toString();
+            this.finalSeconds = Math.floor((this.gap % this.minutes) / this.seconds).toString();
+          },
+          startTimer(){
+            this.endTimer = setInterval(() => {
+            this.countdown();
+            }, 1000);
+          }
+        }">
           <!-- TIMER CAPTION -->
           <span class="text-base text-center px-2.5 font-['Roboto'] text-[#4D4D55]">Ends in</span>
           <!-- TIMERS -->
-          <div class="flex items-center">
+          <div class="flex items-center" x-effect="if(gap < 1000 && gap !== '') clearInterval(endTimer)">
             <!-- DAYS -->
             <div class="my-1 flex items-center">
               <div class="flex">
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">0</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalDay >= 10 ? finalDay[0] : '0'"></span>
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">3</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalDay >= 10 ? finalDay[1] : finalDay"></span>
               </div>
               <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Days</span>
             </div>
@@ -528,9 +568,11 @@
             <div class="my-1 flex items-center">
               <div class="flex">
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">0</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalHour >= 10 ? finalHour[0] : '0'"></span>
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">3</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalHour >= 10 ? finalHour[1] : finalHour"></span>
               </div>
               <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Hrs</span>
             </div>
@@ -538,9 +580,11 @@
             <div class="my-1 flex items-center">
               <div class="flex">
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">0</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalMinutes >= 10 ? finalMinutes[0] : '0'"></span>
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">3</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalMinutes >= 10 ? finalMinutes[1] : finalMinutes"></span>
               </div>
               <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Mins</span>
             </div>
@@ -548,9 +592,11 @@
             <div class="my-1 flex items-center">
               <div class="flex">
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">0</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalSeconds >= 10 ? finalSeconds[0] : '0'"></span>
                 <span
-                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']">3</span>
+                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                  x-text="finalSeconds >= 10 ? finalSeconds[1] : finalSeconds"></span>
               </div>
               <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Secs</span>
             </div>
