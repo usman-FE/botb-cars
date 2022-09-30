@@ -18,6 +18,8 @@
 
   <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
   <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+
+
   <title>Cars | BOTB</title>
 </head>
 
@@ -836,6 +838,200 @@
           <a href="#">
             <img src="images/hero-banner.jpg" alt="Hero Banner" class="max-w-full h-auto">
           </a>
+        </div>
+      </div>
+      <!-- HERO MODAL -->
+      <div class="fixed inset-0 bg-black/40 w-full h-full z-50 flex items-center justify-center">
+        <!-- MODAL -->
+        <div class="w-full h-full lg:h-auto lg:w-[80%] relative mx-auto bg-white rounded-lg shadow-2xl px-8 py-6">
+          <div class="relative">
+            <!-- CLOSE BTN -->
+            <button type="button" class="outline-none bg-transparent border-none absolute top-0 right-0 group">
+              <img src="images/close-big.png" alt="Close Button"
+                class="select-none transition-all group-hover:rotate-180" draggable="false">
+            </button>
+            <!-- MODAL CONTENT BOX -->
+            <div>
+              <div>
+                <!-- MODAL HEADING -->
+                <div class="pb-4">
+                  <h3
+                    class="text-[#696971] text-2xl mr-12 pb-1 text-ellipsis uppercase font-semibold overflow-hidden whitespace-nowrap ">
+                    Win a
+                    Porsche Manhart Cayenne Turbo Coupe CRT800</h3>
+                  <div class="text-sm">
+                    <a href="#" class="text-[#A2A2A2] hover:underline mr-3">
+                      <span class="text-[#FF8200]">Ticket Price:</span>
+                      <span class="text-[#6B6A72]">£4.30</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- MODAL CONTENT -->
+                <div class="py-3.5 flex">
+                  <!-- LEFT SIDE -->
+                  <div class="w-[58%] mr-[1%]">
+                    <!-- CAROUSEL -->
+                    <div class="overflow-hidden bg-white" x-data="{
+                                      init(){
+                                        this.changeOpacitySm();
+                          
+                                        $nextTick(() => {
+                                               Array.from($refs.paginationSm.children)[1].classList.add('bg-[#FF8200]');
+                                               Array.from($refs.paginationSm.children)[1].classList.remove('bg-black/40');
+                                              });
+                                      },
+                                      showArrows: false,
+                                      currentSlide: 0,
+                                      touchstartX: 0,
+                                      touchstartY: 0,
+                                      touchendX: 0,
+                                      touchendY: 0,
+                                      numberOfItems: $refs.testimonialContainerSm.children.length,
+                                      numberOfSlides: Math.ceil($refs.testimonialContainerSm.children.length) - 1,
+                                      pagContainer: $refs.paginationSm.children,
+                                      paginationClassSm: function () {
+                                        Array.from($refs.paginationSm.children).forEach(el => {
+                                                el.classList.remove('bg-[#FF8200]');
+                                                el.classList.add('bg-black/40');
+                                                if (el.id.substr(2) === $refs.testimonialContainerSm.dataset.id) {
+                                                  el.classList.add('bg-[#FF8200]');
+                                                  el.classList.remove('bg-black/40');
+                                                }
+                                          });
+                                      },
+                                      moveSlideRightSm(){
+                                        this.currentSlide++
+                                        $refs.testimonialContainerSm.dataset.id = this.currentSlide + 1;
+                                        if(this.currentSlide >= this.numberOfSlides + 1){
+                                          this.currentSlide = this.numberOfSlides;
+                                          $refs.testimonialContainerSm.dataset.id = this.currentSlide + 1;
+                                        } 
+                                        $refs.testimonialContainerSm.style.transform = `translateX(-${((this.currentSlide) * 100)}%)`
+                                        this.paginationClassSm()
+                                      },
+                                      moveSlideLeftSm(){
+                                        this.currentSlide--
+                                        if(this.currentSlide <= 0){
+                                          this.currentSlide = 0;
+                                          $refs.testimonialContainerSm.dataset.id = this.currentSlide + 1;
+                                          $refs.testimonialContainerSm.style.transform = `translateX(0%)`
+                                        }else{
+                                          $refs.testimonialContainerSm.style.transform = `translateX(-${((this.currentSlide) * 100)}%)`
+                                          $refs.testimonialContainerSm.dataset.id = this.currentSlide + 1;
+                                        }
+                                        this.paginationClassSm()
+                                      },
+                                      changeOpacitySm(){
+                                        Array.from($refs.testimonialContainerSm.children).forEach(item => {
+                                          item.classList.add('opacity-10')
+                                        })
+                                        $refs.testimonialContainerSm.children[this.currentSlide].classList.remove('opacity-10')
+                                      },
+                                      handleGesture: function(){
+                                      if (this.touchendX + 21 < this.touchstartX) { 
+                                        this.moveSlideRightSm();
+                                        this.changeOpacitySm();
+                                      } 
+                                      if(this.touchendX > this.touchstartX + 21) {
+                                        this.moveSlideLeftSm();
+                                        this.changeOpacitySm();
+                                      }
+                                      }
+                                    }">
+                      <!-- SLIDER CONTAINER -->
+                      <div class="relative h-full" @mouseenter="showArrows = true" @mouseleave="showArrows = false"
+                        @mousedown.passive="
+                                  touchstartY = $event.screenY;
+                                  touchstartX = $event.screenX;
+                                " @touchstart.passive="
+                                  touchstartX = $event.changedTouches[0].screenX;
+                                  touchstartY = $event.changedTouches[0].screenY;
+                                " @mouseup.passive="
+                                  touchendX = $event.screenX;
+                                  touchendY = $event.screenY;
+                                  handleGesture();
+                                " @touchend.passive="
+                                  touchendX = $event.changedTouches[0].screenX;
+                                  touchendY = $event.changedTouches[0].screenY;
+                                  handleGesture();
+                                ">
+                        <!-- BUTTON LEFT -->
+                        <button @click="
+                                        moveSlideLeftSm();
+                                        changeOpacitySm();
+                                      " x-show="showArrows"
+                          class="absolute p-2.5 -translate-y-1/2 h-12 w-12 rounded-full hover:scale-110 transition-all text-white z-10 left-3 lg:left-[7%] top-1/2 "
+                          type="button">
+                          <img src="images/carousel-chevron.png" class="rotate-180" alt="">
+                        </button>
+                        <!-- BUTTON RIGHT -->
+                        <button @click="
+                                        moveSlideRightSm();
+                                        changeOpacitySm();
+                                      " x-show="showArrows"
+                          class="absolute p-2.5 -translate-y-1/2 h-12 w-12  rounded-full hover:scale-110 transition-all text-white z-10 right-3 lg:right-[7%] top-1/2"
+                          type="button">
+                          <img src="images/carousel-chevron.png" alt="">
+                        </button>
+                        <!-- SLIDER -->
+                        <div class="flex flex-nowrap translate-x-[0] transition-all duration-500"
+                          x-ref="testimonialContainerSm" data-id="1">
+                          <!-- SLIDE -->
+                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                            <img src="images/carousel-1.png" draggable="false" alt="">
+                          </div>
+                          <!-- SLIDE -->
+                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                            <img src="images/carousel-2.jpeg" draggable="false" alt="">
+                          </div>
+                          <!-- SLIDE -->
+                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                            <img src="images/carousel-3.jpeg" draggable="false" alt="">
+                          </div>
+                          <!-- SLIDE -->
+                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                            <img src="images/carousel-4.jpeg" draggable="false" alt="">
+                          </div>
+                          <!-- SLIDE -->
+                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                            <img src="images/carousel-5.jpeg" draggable="false" alt="">
+                          </div>
+                          <!-- SLIDE -->
+                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                            <img src="images/carousel-6.jpeg" draggable="false" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- SLIDER NAVIGATION -->
+                      <ul class="align-center justify-center flex flex-nowrap w-full space-x-2 -translate-y-full -mt-4"
+                        x-ref="paginationSm">
+                        <template x-for="i in numberOfItems">
+                          <li class="h-2 w-2 rounded-full bg-black/40 inline-block cursor-pointer" :id="$id('b')"
+                            @click="
+                                              if(+$el.id.substr(2) === 1){
+                                                $refs.testimonialContainerSm.style.transform = `translateX(0%)`
+                                                $refs.testimonialContainerSm.dataset.id = 1;
+                                              }else{
+                                                $refs.testimonialContainerSm.style.transform = `translateX(-${(Array.from($el.parentElement.children).indexOf($el) - 1) * 100}%)`
+                                                $refs.testimonialContainerSm.dataset.id = +$el.id.substr(2);
+                                              }
+                                              currentSlide = $refs.testimonialContainerSm.dataset.id - 1;
+                                              Array.from($el.parentElement.children).forEach(el => {
+                                                el.classList.remove('bg-[#FF8200]');
+                                                el.classList.add('bg-black/40');
+                                              })
+                                              $el.classList.remove('bg-black/40');
+                                              $el.classList.add('bg-[#FF8200]');
+                                              changeOpacitySm()
+                                            "></li>
+                        </template>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
