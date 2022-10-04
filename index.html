@@ -50,7 +50,7 @@
       <!-- HEADER CONTAINER -->
       <div @mouseover="if(window.innerWidth >= 1024) showDropdown = true"
         @mouseleave="if(window.innerWidth >= 1024) showDropdown = false"
-        class="bg-white fixed top-0 left-0 h-20 w-full z-40">
+        class="bg-white z-40 fixed top-0 left-0 h-20 w-full">
         <!-- MAIN NAVIGATION BAR -->
         <div class="max-w-[1360px] px-2.5 md:px-6 mx-auto h-full flex relative bg-white z-30">
           <!-- HAMBURGER CONTAINER -->
@@ -75,7 +75,7 @@
             x-transition:enter-start="opacity-0 -translate-x-full" x-transition:enter-end="opacity-100 translate-x-0"
             x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0"
             x-transition:leave-end="opacity-0 -translate-x-full"
-            class="fixed bg-white z-40 m-auto w-full h-full left-0 top-0 px-5 sm:hidden font-['Roboto'] overflow-y-auto overflow-x-hidden pb-14">
+            class="fixed bg-white z-50 m-auto w-full h-full left-0 top-0 px-5 sm:hidden font-['Roboto'] overflow-y-auto overflow-x-hidden pb-14">
             <!-- DROPDOWN HEADER SMALL -->
             <div class="flex items-center justify-around w-full h-[150px] relative">
               <!-- LOGIN -->
@@ -1606,7 +1606,7 @@
   </section>
   <!-- COMPETITION SECTION END -->
   <!-- MAIN RESULTS SECTION -->
-  <section class="max-w-[1360px] mx-auto relative z-20" x-data="{
+  <section class="max-w-[1360px] mx-auto relative" x-data="{
       makes: [
         {title: 'All Makes', results: null},
         {title: 'Alfa Romeo', results: 21},
@@ -2033,7 +2033,7 @@
           </form>
         </div>
         <!-- CONTAINER SMALL -->
-        <div class="p-2.5">
+        <div class="p-2.5 lg:hidden">
           <div class="flex w-full">
             <!-- SEARCH BAR SMALL -->
             <div class="pr-2 grow">
@@ -2074,6 +2074,43 @@
                       x-text="item.title"></a>
                   </div>
                 </template>
+              </div>
+            </div>
+            <!-- FITLER SMALL -->
+            <div class="pr-2 relative" x-data="{
+                          isOpen: false,
+                          selected: 'Sort By',
+                        }">
+              <input type="text" x-model="selected" x-ref="inputSm" hidden>
+              <button @click.prevent="isOpen = !isOpen" type="button"
+                class="h-11 w-11 text-[#FF8200] bg-white p-2 rounded flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                </svg>
+              </button>
+              <div class="fixed inset-0 w-full h-screen bg-white origin-top z-50" @click.away="isOpen = false"
+                x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-y-100"
+                x-transition:leave-end="opacity-20 scale-y-0">
+                <!-- FILTER HEADER -->
+                <div class="p-8 pb-0 flex justify-between items-center">
+                  <!-- HEADING -->
+                  <div class="text-[#696971] text-2xl">Filters</div>
+                  <!-- CLOSE BTN -->
+                  <button type="button" @click="isOpen = false"
+                    class="uppercase font-semibold border-none outline-none bg-transparent flex items-center gap-x-1 text-[#696971]">
+                    Clear All
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path
+                          d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
