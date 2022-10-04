@@ -501,7 +501,13 @@
   <!-- HEADER END -->
   <!-- COMPETITION SECTION START -->
   <section>
-    <div class="relative bg-[#F0F0F0] pb-5" x-data="{isModalOpen: false}">
+    <div class="relative bg-[#F0F0F0] md:bg-white pb-5 md:pb-0" x-data="{
+          isModalOpen: false,
+          bodyOverflow: function () {
+          document.querySelector('body').classList.remove('overflow-hidden', 'overflow-visible');
+          document.querySelector('body').classList.add(this.isModalOpen ? 'overflow-hidden' : 'overflow-visible');
+          }
+          }">
       <!-- HEADING & TIMER -->
       <div class="pt-5 md:pt-7 md:pb-2.5 z-20 relative max-w-[1360px] px-2.5 md:px-6 mx-auto" x-data="{
           init(){
@@ -654,7 +660,7 @@
                   <!-- IMAGE -->
                   <div
                     class="h-[120px] sm:h-[140px] min-h-[115px] w-full mb-3 transition-all group-hover:scale-90 duration-500">
-                    <img @click="isModalOpen = true" src="images/manhart-crt-800-botb-2022-thumb.png"
+                    <img @click="isModalOpen = true; bodyOverflow()" src="images/manhart-crt-800-botb-2022-thumb.png"
                       class="object-contain object-center h-[120px] sm:h-[140px] min-h-[115px] mx-auto" alt="">
                   </div>
                   <!-- BADGE -->
@@ -835,7 +841,7 @@
       <!-- DESKTOP BANNER -->
       <div class="hidden md:block max-w-[1360px] bg-[#F0F0F0] mx-auto">
         <div class="w-full">
-          <a href="#" @click.prevent="isModalOpen = true">
+          <a href="#" @click.prevent="isModalOpen = true; bodyOverflow()">
             <img src="images/hero-banner.jpg" alt="Hero Banner" class="max-w-full h-auto">
           </a>
         </div>
@@ -844,7 +850,8 @@
       <div class="fixed inset-0 bg-black/40 w-full h-full z-50 flex items-center justify-center" x-show="isModalOpen"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.self="isModalOpen = false">
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+        @click.self="isModalOpen = false; bodyOverflow()">
         <!-- MODAL -->
         <div
           class="w-full h-full lg:h-auto lg:w-[80%] relative mx-auto bg-white lg:rounded-lg shadow-2xl px-8 py-6 overflow-auto"
@@ -854,7 +861,7 @@
           x-transition:leave-end="opacity-0 translate-y-full">
           <div class="relative">
             <!-- CLOSE BTN -->
-            <button @click="isModalOpen = false" type="button"
+            <button @click="isModalOpen = false; bodyOverflow()" type="button"
               class="outline-none bg-transparent border-none absolute top-0 right-0 group">
               <img src="images/close-big.png" alt="Close Button"
                 class="select-none transition-all group-hover:rotate-180" draggable="false">
@@ -1230,7 +1237,7 @@
                       <div class="absolute top-[1px] left-0.5 right-5 bg-white h-6 z-20"></div>
                       <!-- TAB CONTENT BOX -->
                       <div
-                        class="border border-[#E9E9E9] py-5 lg:p-5 pt-8 lg:absolute inset-0 z-10 lg:overflow-auto text-[#696971]">
+                        class="border border-[#E9E9E9] py-5 px-3 lg:p-5 pt-8 lg:absolute inset-0 z-10 lg:overflow-auto text-[#696971]">
                         <!-- BOX -->
                         <div class="" x-show="currentTab === 1">
                           <p class="mb-5">
@@ -1598,6 +1605,482 @@
     </div>
   </section>
   <!-- COMPETITION SECTION END -->
+  <!-- MAIN RESULTS SECTION -->
+  <section class="max-w-[1360px] mx-auto relative z-20" x-data="{
+      makes: [
+        {title: 'All Makes', results: null},
+        {title: 'Alfa Romeo', results: 21},
+        {title: 'Aston Martin', results: 33},
+        {title: 'Audi', results: 5},
+        {title: 'Auto Trail', results: 22},
+        {title: 'Bentley', results: 55},
+        {title: 'BMW', results: 66},
+        {title: 'Caterham', results: 111},
+        {title: 'Dodge', results: 123},
+        {title: 'Ford', results: 321},
+        {title: 'Genesis', results: 54},
+        {title: 'Honda', results: 89},
+        {title: 'Hymer', results: 100},
+        {title: 'Hyundai', results: 1231},
+        {title: 'Jaguar', results: 23},
+        {title: 'Jeep', results: 1},
+        {title: 'Knaus', results: 232},
+        {title: 'Lamborghini', results: 43},
+        {title: 'Land Rover', results: 23},
+        {title: 'Lotus', results: 82},
+        {title: 'Mazda', results: 91},
+        {title: 'Mercedes', results: 32},
+        {title: 'Mini', results: 12},
+        {title: 'Nissan', results: 11 },
+        {title: 'Porsche', results: 12},
+        {title: 'Range Rover', results: 1},
+        {title: 'Renaultsport', results: 22},
+        {title: 'Seat', results: 43},
+        {title: 'Subaru', results: 91},
+        {title: 'Tesla', results: 80},
+        {title: 'Toyota', results: 21},
+        {title: 'Volkswagen', results: 123},
+        {title: 'Volvo', results: 76},
+      ],
+      styles: [
+        {title: 'All Styles', results: null},
+        {title: '200MPH', results: 2},
+        {title: 'Camper', results: 10},
+        {title: 'Classics', results: 3},
+        {title: 'Convertibles', results: 5},
+        {title: 'Coupes', results: 19},
+        {title: 'Estates', results: 7},
+        {title: 'EV / Hybrid', results: 31},
+        {title: 'Grand Touring', results: 7},
+        {title: 'Hot Hatch', results: 20},
+        {title: 'In the Headlights', results: 1},
+        {title: 'Modern Classics', results: 7},
+        {title: 'Modified', results: 24},
+        {title: 'New Additions', results: 18},
+        {title: 'Pickup', results: 3},
+        {title: 'Popular', results: 11},
+        {title: 'Recommended', results: 21},
+        {title: 'Saloons', results: 19},
+        {title: 'Sports Cars', results: 26},
+        {title: 'Supercars', results: 11},
+        {title: 'SUV / 4X4', results: 53},
+        {title: 'Truck', results: 1},
+        {title: 'Van', results: 6},
+      ],
+      options: [
+        {title: 'High to Low', url: '#'},
+        {title: 'Low to High', url: '#'},
+        {title: 'A to Z', url: '#'},
+        {title: 'Z to A', url: '#'},
+      ]
+    }">
+    <!-- FILTERS SECTION -->
+    <div class="">
+      <div class="py-[17px] pb-3.5 bg-[#F1F1F1]">
+        <!-- CONTAINER LARGE -->
+        <div class="hidden lg:block xl:max-w-[1200px] px-2.5 mx-auto relative">
+          <form>
+            <!-- FILTER PRIMARY -->
+            <div class="flex items-center gap-x-5">
+              <!-- SORT BY -->
+              <div class="flex bg-white rounded pr-5 justify-center items-center relative" x-data="{
+                          isOpen: false,
+                          selected: 'Sort By',
+                        }">
+                <input type="text" x-model="selected" x-ref="input" hidden>
+                <button
+                  class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
+                  @click.prevent="isOpen = !isOpen">
+                  <span class="text-xs font-['Roboto']">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
+                      <path fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                  <span x-text="selected"></span>
+                </button>
+                <div
+                  class="absolute top-full w-full right-0 bg-white rounded-xl p-1.5 border border-[#CCCCCC] origin-top z-40"
+                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                  x-transition:leave="transition ease-in duration-300"
+                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                  <template x-for="item in options" :key="item.title">
+                    <div class="rounded-md overflow-hidden">
+                      <a :href="item.url" @click.prevent="
+                          selected = item.title; 
+                          isOpen = false; 
+                          "
+                        class="text-[#535353] font-semibold block px-3 text-[15px] leading-9 hover:font-bold hover:bg-[#F0F0F0]"
+                        x-text="item.title"></a>
+                    </div>
+                  </template>
+                </div>
+              </div>
+              <!-- ALL MAKES -->
+              <div class="flex bg-white rounded pr-5 justify-center items-center" x-data="{
+                isOpen: false,
+                hovering: '',
+                checked: []
+              }">
+                <button
+                  class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
+                  @click.prevent="isOpen = !isOpen">
+                  <span class="text-xs font-['Roboto']">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
+                      <path fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                  <span>All Makes</span>
+                </button>
+                <div
+                  class="absolute top-full w-[939px] left-[calc((100%_-_939px)_/_2)] bg-white border border-[#C7C7C7] origin-top z-40"
+                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                  x-transition:leave="transition ease-in duration-300"
+                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                  <div class="w-full h-full relative py-1.5 px-2.5">
+                    <!-- CHEVRON -->
+                    <div
+                      class="absolute w-7 h-7 bg-white border-l border-t border-[#C7C7C7] rotate-45 -top-3.5 left-[10%]">
+                    </div>
+                    <!-- LOGO CONTAINER -->
+                    <ul class="flex m-2.5">
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/aston-martin.png" alt="Aston Martin" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                           if(checked.includes($el.alt)){
+                            checked = checked.filter(item => item !== $el.alt);
+                          }else{
+                            checked.push($el.alt)
+                           }
+                          "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/porsche.png" alt="Porsche" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                           if(checked.includes($el.alt)){
+                            checked = checked.filter(item => item !== $el.alt);
+                          }else{
+                            checked.push($el.alt)
+                           }
+                          "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/audi.png" alt="Audi" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                           if(checked.includes($el.alt)){
+                            checked = checked.filter(item => item !== $el.alt);
+                          }else{
+                            checked.push($el.alt)
+                           }
+                          "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/bmw.png" alt="BMW" @mouseover="hovering = $el.alt" @mouseleave="hovering = ''"
+                          @click="
+                           if(checked.includes($el.alt)){
+                            checked = checked.filter(item => item !== $el.alt);
+                          }else{
+                            checked.push($el.alt)
+                           }
+                          "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/mercedes.png" alt="Mercedes" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                           if(checked.includes($el.alt)){
+                            checked = checked.filter(item => item !== $el.alt);
+                          }else{
+                            checked.push($el.alt)
+                           }
+                          "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/range-rover.png" alt="Range Rover" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                           if(checked.includes($el.alt)){
+                            checked = checked.filter(item => item !== $el.alt);
+                          }else{
+                            checked.push($el.alt)
+                           }
+                          "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                    </ul>
+                    <!-- ALL MAKES OPTIONS -->
+                    <div class="columns-5">
+                      <!-- OPTION -->
+                      <template x-for="make in makes" :key="make.title">
+                        <div class="flex items-start relative mb-2">
+                          <input type="checkbox" :checked="checked.includes(make.title)" class="peer" hidden=""
+                            :id="make.title">
+                          <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                              class="w-4 h-4 stroke-2">
+                              <path fill-rule="evenodd"
+                                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                clip-rule="evenodd"></path>
+                            </svg>
+                          </div>
+                          <div class="absolute top-[0%] left-0 h-5 w-5"
+                            :class="make.title === hovering ? 'border-[#FF8200] border-2' : 'border-[#c7c7c7] border'">
+                          </div>
+                          <label class="ml-6 select-none cursor-pointer flex items-center gap-x-1  text-sm"
+                            :class="make.title === hovering ? 'text-[#FF8200]' :'text-[#696a71]'" :for="make.title">
+                            <span x-text="make.title"></span>
+                            <span class="">(<span x-text="make.results"></span>)</span>
+                          </label>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ALL STYLES -->
+              <div class="flex bg-white rounded pr-5 justify-center items-center" x-data="{
+                              isOpen: false,
+                              hovering: '',
+                              checked: []
+                            }">
+                <button
+                  class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
+                  @click.prevent="isOpen = !isOpen">
+                  <span class="text-xs font-['Roboto']">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
+                      <path fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                  <span>All Styles</span>
+                </button>
+                <div
+                  class="absolute top-full w-[939px] left-[calc((100%_-_939px)_/_2)] bg-white border border-[#C7C7C7] origin-top z-40"
+                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                  x-transition:leave="transition ease-in duration-300"
+                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                  <div class="w-full h-full relative py-1.5 px-2.5">
+                    <!-- CHEVRON -->
+                    <div
+                      class="absolute w-7 h-7 bg-white border-l border-t border-[#C7C7C7] rotate-45 -top-3.5 left-[30%]">
+                    </div>
+                    <!-- LOGO CONTAINER -->
+                    <ul class="flex m-2.5">
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/aston-martin.png" alt="SUV / 4X4" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                                         if(checked.includes($el.alt)){
+                                          checked = checked.filter(item => item !== $el.alt);
+                                        }else{
+                                          checked.push($el.alt)
+                                         }
+                                        "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/porsche.png" alt="Convertibles" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                                         if(checked.includes($el.alt)){
+                                          checked = checked.filter(item => item !== $el.alt);
+                                        }else{
+                                          checked.push($el.alt)
+                                         }
+                                        "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/audi.png" alt="Coupes" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                                         if(checked.includes($el.alt)){
+                                          checked = checked.filter(item => item !== $el.alt);
+                                        }else{
+                                          checked.push($el.alt)
+                                         }
+                                        "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/bmw.png" alt="Hot Hatch" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                                         if(checked.includes($el.alt)){
+                                          checked = checked.filter(item => item !== $el.alt);
+                                        }else{
+                                          checked.push($el.alt)
+                                         }
+                                        "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/mercedes.png" alt="EV / Hybrid" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                                         if(checked.includes($el.alt)){
+                                          checked = checked.filter(item => item !== $el.alt);
+                                        }else{
+                                          checked.push($el.alt)
+                                         }
+                                        "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                      <li class="p-2.5 cursor-pointer">
+                        <img src="images/range-rover.png" alt="Sports Cars" @mouseover="hovering = $el.alt"
+                          @mouseleave="hovering = ''" @click="
+                                         if(checked.includes($el.alt)){
+                                          checked = checked.filter(item => item !== $el.alt);
+                                        }else{
+                                          checked.push($el.alt)
+                                         }
+                                        "
+                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                      </li>
+                    </ul>
+                    <!-- ALL MAKES OPTIONS -->
+                    <div class="columns-5">
+                      <!-- OPTION -->
+                      <template x-for="make in styles" :key="make.title">
+                        <div class="flex items-start relative mb-2">
+                          <input type="checkbox" :checked="checked.includes(make.title)" class="peer" hidden=""
+                            :id="make.title">
+                          <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                              class="w-4 h-4 stroke-2">
+                              <path fill-rule="evenodd"
+                                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                clip-rule="evenodd"></path>
+                            </svg>
+                          </div>
+                          <div class="absolute top-[0%] left-0 h-5 w-5"
+                            :class="make.title === hovering ? 'border-[#FF8200] border-2' : 'border-[#c7c7c7] border'">
+                          </div>
+                          <label class="ml-6 select-none cursor-pointer flex items-center gap-x-1  text-sm"
+                            :class="make.title === hovering ? 'text-[#FF8200]' :'text-[#696a71]'" :for="make.title">
+                            <span x-text="make.title"></span>
+                            <span class="">(<span x-text="make.results"></span>)</span>
+                          </label>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- TICKETS SLIDER -->
+              <div class="flex pr-5 justify-center items-center relative" x-data="{range: 0}">
+                <div class="flex flex-col justify-center relative items-start grow">
+                  <div class="flex justify-center w-full">
+                    <span class=" text-[#55637d] bottom-[22px] leading-none px-0.5 translate-y-2.5">Ticket Price (£)
+                    </span>
+                  </div>
+                  <div class="w-full h-8 flex items-end relative">
+                    <input type="range" min="0" max="5" step="1" x-model="range"
+                      class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
+                    <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
+                      :style="range ? 'width: ' + (range * 18) + '%' : ''">
+                    </div>
+                  </div>
+                  <div class="flex justify-between w-full">
+                    <span class=" text-[#55637d] bottom-[22px] py-px px-0.5 text-sm">0</span>
+                    <span class=" text-[#55637d] bottom-[22px] py-px px-0.5 text-sm">5</span>
+                  </div>
+                </div>
+              </div>
+              <!-- RESET BUTTON -->
+              <div class="flex pr-5 justify-center items-center relative">
+                <button type="button"
+                  class="p-2 pl-1.5 rounded-full bg-[#DDDDDD] border-2 border-white transition-all hover:bg-[#6878B3] hover:scale-110">
+                  <img src="images/icon-reset.png" alt="Reset" class="block">
+                </button>
+              </div>
+              <!-- SEARCH BAR -->
+              <div class="flex pr-5 justify-center items-center relative">
+                <div class="relative flex max-w-xs h-8">
+                  <input type="search" class="px-8 w-full h-full text-[#79808E] text-[15px]  outline-none">
+                  <span class="absolute top-1/2 -translate-y-1/2 left-2 text-[#79808E]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                      <path fill-rule="evenodd"
+                        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+              <!-- MORE BUTTON -->
+              <div class="flex pr-5 justify-center items-center relative">
+                <button type="button" class=" text-sm group text-left flex items-center justify-center">
+                  <span class="text-[#FF8200] pr-3 group-hover:underline">More</span>
+                  <span class="text-xs font-['Roboto']">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      class="w-6 h-6 transition-all">
+                      <path fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- CONTAINER SMALL -->
+        <div class="p-2.5">
+          <div class="flex w-full">
+            <!-- SEARCH BAR SMALL -->
+            <div class="pr-2 grow">
+              <div class="relative flex w-[75%] h-11">
+                <input type="search" class="px-8 w-full h-full text-[#79808E] text-base py-1.5 outline-none rounded">
+                <span class="absolute top-1/2 -translate-y-1/2 right-2 text-[#FF8200]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path fill-rule="evenodd"
+                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <!-- SORT BY SMALL -->
+            <div class="pr-2 relative" x-data="{
+              isOpen: false,
+              selected: 'Sort By',
+            }">
+              <input type="text" x-model="selected" x-ref="inputSm" hidden>
+              <button @click.prevent="isOpen = !isOpen" type="button"
+                class="h-11 w-11 bg-white p-2 rounded flex items-center justify-center">
+                <img src="images/sort-by-orange.png" alt="Sort by" class="w-[30px] h-[30px] object-contain">
+              </button>
+              <div
+                class="absolute top-full w-[200px] right-0 bg-white rounded-xl p-1.5 border border-[#CCCCCC] origin-top z-40"
+                @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-y-100"
+                x-transition:leave-end="opacity-20 scale-y-0">
+                <template x-for="item in options" :key="item.title">
+                  <div class="rounded-md overflow-hidden">
+                    <a :href="item.url" @click.prevent="
+                                        selected = item.title; 
+                                        isOpen = false; 
+                                        "
+                      class="text-[#535353] font-semibold block px-3 text-[15px] leading-9 hover:font-bold hover:bg-[#F0F0F0]"
+                      x-text="item.title"></a>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- FOOTER START -->
   <footer class="bg-[#F0F0F0] border-t-2 border-[#CCCCCC] pt-10 pb-7 px-2.5 flex flex-col items-center">
     <!-- FOOTER PAGES -->
