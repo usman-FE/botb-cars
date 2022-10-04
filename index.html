@@ -1672,7 +1672,7 @@
         {title: 'Low to High', url: '#'},
         {title: 'A to Z', url: '#'},
         {title: 'Z to A', url: '#'},
-      ]
+      ],
     }">
     <!-- FILTERS SECTION -->
     <div class="">
@@ -2080,9 +2080,13 @@
             <div class="pr-2 relative" x-data="{
                           isOpen: false,
                           selected: 'Sort By',
+                          bodyOverflow: function () {
+                            document.querySelector('body').classList.remove('overflow-hidden', 'overflow-visible');
+                            document.querySelector('body').classList.add(this.isOpen ? 'overflow-hidden' : 'overflow-visible');
+                            }
                         }">
               <input type="text" x-model="selected" x-ref="inputSm" hidden>
-              <button @click.prevent="isOpen = !isOpen" type="button"
+              <button @click.prevent="isOpen = !isOpen; bodyOverflow()" type="button"
                 class="h-11 w-11 text-[#FF8200] bg-white p-2 rounded flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6">
@@ -2090,17 +2094,16 @@
                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                 </svg>
               </button>
-              <div class="fixed inset-0 w-full h-screen bg-white origin-top z-50" @click.away="isOpen = false"
-                x-show="isOpen" x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
-                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-y-100"
-                x-transition:leave-end="opacity-20 scale-y-0">
+              <div class="fixed inset-0 w-full h-screen bg-white origin-top z-50" x-show="isOpen"
+                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="scale-y-0 opacity-20"
+                x-transition:enter-end="scale-y-100 opacity-100" x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
                 <!-- FILTER HEADER -->
                 <div class="p-8 border-b border-[#F1F1F1] flex justify-between items-center">
                   <!-- HEADING -->
                   <div class="text-[#696971] text-2xl">Filters</div>
                   <!-- CLOSE BTN -->
-                  <button type="button" @click="isOpen = false"
+                  <button type="button" @click="isOpen = false; bodyOverflow()"
                     class="uppercase font-semibold border-none outline-none bg-transparent flex items-center gap-x-1 text-[#696971]">
                     Clear All
                     <span>
