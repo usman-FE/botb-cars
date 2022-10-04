@@ -2096,7 +2096,7 @@
                 x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-y-100"
                 x-transition:leave-end="opacity-20 scale-y-0">
                 <!-- FILTER HEADER -->
-                <div class="p-8 pb-0 flex justify-between items-center">
+                <div class="p-8 border-b border-[#F1F1F1] flex justify-between items-center">
                   <!-- HEADING -->
                   <div class="text-[#696971] text-2xl">Filters</div>
                   <!-- CLOSE BTN -->
@@ -2110,6 +2110,73 @@
                       </svg>
                     </span>
                   </button>
+                </div>
+                <!-- FILTER OPTIONS -->
+                <div class="h-[calc(100%_-_215px)] px-8 overflow-y-auto grid grid-cols-2">
+                  <!-- MAKES -->
+                  <div class="pt-8">
+                    <h2 class="uppercase text-[#696971] text-lg mb-4">Makes</h2>
+                    <ul class="">
+                      <!-- OPTION -->
+                      <template x-for="make in makes" :key="make.title">
+                        <li>
+                          <div class="flex items-start relative mb-2">
+                            <input type="checkbox" class="peer" hidden="" :id="make.title + 'Sm'">
+                            <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-4 h-4 stroke-2">
+                                <path fill-rule="evenodd"
+                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                  clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                            <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                            </div>
+                            <label
+                              class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
+                              :for="make.title + 'Sm'">
+                              <span x-text="make.title"></span>
+                              <span class="">(<span x-text="make.results"></span>)</span>
+                            </label>
+                          </div>
+                        </li>
+                      </template>
+                    </ul>
+                  </div>
+                  <!-- STYLES -->
+                  <div class="pt-8">
+                    <h2 class="uppercase text-[#696971] text-lg mb-4">Styles</h2>
+                    <ul class="">
+                      <!-- OPTION -->
+                      <template x-for="style in styles" :key="style.title">
+                        <li>
+                          <div class="flex items-start relative mb-2">
+                            <input type="checkbox" class="peer" hidden="" :id="style.title + 'Sm'">
+                            <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-4 h-4 stroke-2">
+                                <path fill-rule="evenodd"
+                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                  clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                            <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                            </div>
+                            <label
+                              class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
+                              :for="style.title + 'Sm'">
+                              <span x-text="style.title"></span>
+                              <span class="">(<span x-text="style.results"></span>)</span>
+                            </label>
+                          </div>
+                        </li>
+                      </template>
+                    </ul>
+                  </div>
+                </div>
+                <!-- FILTER FOOTER -->
+                <div class="py-6 border-t border-[#E9E9E9] flex justify-center items-center">
+                  <a href="#" class="uppercase bg-[#FF8200] py-2.5 px-7 text-white font-semibold">View (156) cars</a>
                 </div>
               </div>
             </div>
