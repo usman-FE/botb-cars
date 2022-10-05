@@ -847,47 +847,48 @@
         </div>
       </div>
       <!-- HERO MODAL -->
-      <div class="fixed inset-0 bg-black/40 w-full h-full z-50 flex items-center justify-center" x-show="isModalOpen"
-        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-        @click.self="isModalOpen = false; bodyOverflow()">
-        <!-- MODAL -->
-        <div
-          class="w-full h-full lg:h-auto lg:w-[80%] relative mx-auto bg-white lg:rounded-lg shadow-2xl px-8 py-6 overflow-auto"
-          x-show="isModalOpen" x-transition:enter="transition ease-out duration-300 delay-300"
-          x-transition:enter-start="opacity-0 translate-y-full" x-transition:enter-end="opacity-100 translate-y-0"
-          x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-y-0"
-          x-transition:leave-end="opacity-0 translate-y-full">
-          <div class="relative">
-            <!-- CLOSE BTN -->
-            <button @click="isModalOpen = false; bodyOverflow()" type="button"
-              class="outline-none bg-transparent border-none absolute top-0 right-0 group">
-              <img src="images/close-big.png" alt="Close Button"
-                class="select-none transition-all group-hover:rotate-180" draggable="false">
-            </button>
-            <!-- MODAL CONTENT BOX -->
-            <div>
+      <template x-if="true">
+        <div class="fixed inset-0 bg-black/40 w-full h-full z-50 flex items-center justify-center" x-show="isModalOpen"
+          x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+          @click.self="isModalOpen = false; bodyOverflow()">
+          <!-- MODAL -->
+          <div
+            class="w-full h-full lg:h-auto lg:w-[80%] relative mx-auto bg-white lg:rounded-lg shadow-2xl px-8 py-6 overflow-auto"
+            x-show="isModalOpen" x-transition:enter="transition ease-out duration-300 delay-300"
+            x-transition:enter-start="opacity-0 translate-y-full" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 translate-y-full">
+            <div class="relative">
+              <!-- CLOSE BTN -->
+              <button @click="isModalOpen = false; bodyOverflow()" type="button"
+                class="outline-none bg-transparent border-none absolute top-0 right-0 group">
+                <img src="images/close-big.png" alt="Close Button"
+                  class="select-none transition-all group-hover:rotate-180" draggable="false">
+              </button>
+              <!-- MODAL CONTENT BOX -->
               <div>
-                <!-- MODAL HEADING -->
-                <div class="pb-4">
-                  <h3
-                    class="text-[#696971] text-2xl mr-12 pb-1 text-ellipsis uppercase font-semibold overflow-hidden whitespace-nowrap ">
-                    Win a
-                    Porsche Manhart Cayenne Turbo Coupe CRT800</h3>
-                  <div class="text-sm">
-                    <a href="#" class="text-[#A2A2A2] hover:underline mr-3">
-                      <span class="text-[#FF8200]">Ticket Price:</span>
-                      <span class="text-[#6B6A72]">£4.30</span>
-                    </a>
+                <div>
+                  <!-- MODAL HEADING -->
+                  <div class="pb-4">
+                    <h3
+                      class="text-[#696971] text-2xl mr-12 pb-1 text-ellipsis uppercase font-semibold overflow-hidden whitespace-nowrap ">
+                      Win a
+                      Porsche Manhart Cayenne Turbo Coupe CRT800</h3>
+                    <div class="text-sm">
+                      <a href="#" class="text-[#A2A2A2] hover:underline mr-3">
+                        <span class="text-[#FF8200]">Ticket Price:</span>
+                        <span class="text-[#6B6A72]">£4.30</span>
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <!-- MODAL CONTENT -->
-                <div class="py-3.5 lg:pt-6 flex flex-col lg:flex-row">
-                  <!-- LEFT SIDE -->
-                  <div class="w-full lg:w-[58%] mr-[1%]">
-                    <!-- CAROUSEL -->
-                    <div class="overflow-hidden bg-white" x-data="{
+                  <!-- MODAL CONTENT -->
+                  <div class="py-3.5 lg:pt-6 flex flex-col lg:flex-row">
+                    <!-- LEFT SIDE -->
+                    <div class="w-full lg:w-[58%] mr-[1%]">
+                      <!-- CAROUSEL -->
+                      <div class="overflow-hidden bg-white" x-data="{
                                       init(){
                                         this.changeOpacitySm();
                           
@@ -953,9 +954,9 @@
                                       }
                                       }
                                     }">
-                      <!-- SLIDER CONTAINER -->
-                      <div class="relative h-full" @mouseenter="showArrows = true" @mouseleave="showArrows = false"
-                        @mousedown.passive="
+                        <!-- SLIDER CONTAINER -->
+                        <div class="relative h-full" @mouseenter="showArrows = true" @mouseleave="showArrows = false"
+                          @mousedown.passive="
                                   touchstartY = $event.screenY;
                                   touchstartX = $event.screenX;
                                 " @touchstart.passive="
@@ -970,59 +971,60 @@
                                   touchendY = $event.changedTouches[0].screenY;
                                   handleGesture();
                                 ">
-                        <!-- BUTTON LEFT -->
-                        <button @click="
+                          <!-- BUTTON LEFT -->
+                          <button @click="
                                         moveSlideLeftSm();
                                         changeOpacitySm();
                                       " x-show="showArrows"
-                          class="absolute p-2.5 -translate-y-1/2 h-12 w-12 rounded-full hover:scale-110 transition-all text-white z-10 left-3 lg:left-[7%] top-1/2 "
-                          type="button">
-                          <img src="images/carousel-chevron.png" class="rotate-180" alt="">
-                        </button>
-                        <!-- BUTTON RIGHT -->
-                        <button @click="
+                            class="absolute p-2.5 -translate-y-1/2 h-12 w-12 rounded-full hover:scale-110 transition-all text-white z-10 left-3 lg:left-[7%] top-1/2 "
+                            type="button">
+                            <img src="images/carousel-chevron.png" class="rotate-180" alt="">
+                          </button>
+                          <!-- BUTTON RIGHT -->
+                          <button @click="
                                         moveSlideRightSm();
                                         changeOpacitySm();
                                       " x-show="showArrows"
-                          class="absolute p-2.5 -translate-y-1/2 h-12 w-12  rounded-full hover:scale-110 transition-all text-white z-10 right-3 lg:right-[7%] top-1/2"
-                          type="button">
-                          <img src="images/carousel-chevron.png" alt="">
-                        </button>
-                        <!-- SLIDER -->
-                        <div class="flex flex-nowrap translate-x-[0] transition-all duration-500"
-                          x-ref="testimonialContainerSm" data-id="1">
-                          <!-- SLIDE -->
-                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
-                            <img src="images/carousel-1.png" draggable="false" alt="">
-                          </div>
-                          <!-- SLIDE -->
-                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
-                            <img src="images/carousel-2.jpeg" draggable="false" alt="">
-                          </div>
-                          <!-- SLIDE -->
-                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
-                            <img src="images/carousel-3.jpeg" draggable="false" alt="">
-                          </div>
-                          <!-- SLIDE -->
-                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
-                            <img src="images/carousel-4.jpeg" draggable="false" alt="">
-                          </div>
-                          <!-- SLIDE -->
-                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
-                            <img src="images/carousel-5.jpeg" draggable="false" alt="">
-                          </div>
-                          <!-- SLIDE -->
-                          <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
-                            <img src="images/carousel-6.jpeg" draggable="false" alt="">
+                            class="absolute p-2.5 -translate-y-1/2 h-12 w-12  rounded-full hover:scale-110 transition-all text-white z-10 right-3 lg:right-[7%] top-1/2"
+                            type="button">
+                            <img src="images/carousel-chevron.png" alt="">
+                          </button>
+                          <!-- SLIDER -->
+                          <div class="flex flex-nowrap translate-x-[0] transition-all duration-500"
+                            x-ref="testimonialContainerSm" data-id="1">
+                            <!-- SLIDE -->
+                            <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                              <img src="images/carousel-1.png" draggable="false" alt="">
+                            </div>
+                            <!-- SLIDE -->
+                            <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                              <img src="images/carousel-2.jpeg" draggable="false" alt="">
+                            </div>
+                            <!-- SLIDE -->
+                            <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                              <img src="images/carousel-3.jpeg" draggable="false" alt="">
+                            </div>
+                            <!-- SLIDE -->
+                            <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                              <img src="images/carousel-4.jpeg" draggable="false" alt="">
+                            </div>
+                            <!-- SLIDE -->
+                            <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                              <img src="images/carousel-5.jpeg" draggable="false" alt="">
+                            </div>
+                            <!-- SLIDE -->
+                            <div class="transition-all duration-500 shrink-0 w-[calc(100%_-_2%)] mr-[2%]">
+                              <img src="images/carousel-6.jpeg" draggable="false" alt="">
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <!-- SLIDER NAVIGATION -->
-                      <ul class="align-center justify-center flex flex-nowrap w-full space-x-2 -translate-y-full -mt-4"
-                        x-ref="paginationSm">
-                        <template x-for="i in numberOfItems">
-                          <li class="h-2 w-2 rounded-full bg-black/40 inline-block cursor-pointer" :id="$id('b')"
-                            @click="
+                        <!-- SLIDER NAVIGATION -->
+                        <ul
+                          class="align-center justify-center flex flex-nowrap w-full space-x-2 -translate-y-full -mt-4"
+                          x-ref="paginationSm">
+                          <template x-for="i in numberOfItems">
+                            <li class="h-2 w-2 rounded-full bg-black/40 inline-block cursor-pointer" :id="$id('b')"
+                              @click="
                                               if(+$el.id.substr(2) === 1){
                                                 $refs.testimonialContainerSm.style.transform = `translateX(0%)`
                                                 $refs.testimonialContainerSm.dataset.id = 1;
@@ -1039,16 +1041,16 @@
                                               $el.classList.add('bg-[#FF8200]');
                                               changeOpacitySm()
                                             "></li>
-                        </template>
-                      </ul>
+                          </template>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <!-- RIGHT SIDE -->
-                  <div class="w-full lg:w-[41%] relative">
-                    <!-- TIMER -->
-                    <div
-                      class="block w-full max-w-[300px] sm:max-w-[380px] my-3 lg:mb-4 mx-auto duration-700 overflow-hidden transition-all rounded-md bg-transparent md:bg-[#E7E7E7] lg:absolute -top-[90px]">
-                      <div class="flex flex-col md:flex-row items-center justify-center gap-y-2" x-data="{
+                    <!-- RIGHT SIDE -->
+                    <div class="w-full lg:w-[41%] relative">
+                      <!-- TIMER -->
+                      <div
+                        class="block w-full max-w-[300px] sm:max-w-[380px] my-3 lg:mb-4 mx-auto duration-700 overflow-hidden transition-all rounded-md bg-transparent md:bg-[#E7E7E7] lg:absolute -top-[90px]">
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-y-2" x-data="{
                                                   init(){
                                                     this.startTimer();
                                                   },
@@ -1087,512 +1089,523 @@
                                                     }, 1000);
                                                   }
                                                 }">
-                        <!-- TIMER CAPTION -->
-                        <span class="text-base text-center px-2.5 font-['Roboto'] shrink-0 md:text-[#4D4D55]">Ends
-                          in</span>
-                        <!-- TIMERS -->
-                        <div class="flex items-center bg-[#E7E7E7] md:bg-transparent pl-3 rounded-md py-1"
-                          x-effect="if(gap < 1000 && gap !== '') clearInterval(endTimer)">
-                          <!-- DAYS -->
-                          <div class="my-1 flex items-center">
-                            <div class="flex">
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalDay >= 10 ? finalDay[0] : '0'"></span>
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalDay >= 10 ? finalDay[1] : finalDay"></span>
+                          <!-- TIMER CAPTION -->
+                          <span class="text-base text-center px-2.5 font-['Roboto'] shrink-0 md:text-[#4D4D55]">Ends
+                            in</span>
+                          <!-- TIMERS -->
+                          <div class="flex items-center bg-[#E7E7E7] md:bg-transparent pl-3 rounded-md py-1"
+                            x-effect="if(gap < 1000 && gap !== '') clearInterval(endTimer)">
+                            <!-- DAYS -->
+                            <div class="my-1 flex items-center">
+                              <div class="flex">
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalDay >= 10 ? finalDay[0] : '0'"></span>
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalDay >= 10 ? finalDay[1] : finalDay"></span>
+                              </div>
+                              <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Days</span>
                             </div>
-                            <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Days</span>
-                          </div>
-                          <!-- HRS -->
-                          <div class="my-1 flex items-center">
-                            <div class="flex">
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalHour >= 10 ? finalHour[0] : '0'"></span>
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalHour >= 10 ? finalHour[1] : finalHour"></span>
+                            <!-- HRS -->
+                            <div class="my-1 flex items-center">
+                              <div class="flex">
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalHour >= 10 ? finalHour[0] : '0'"></span>
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalHour >= 10 ? finalHour[1] : finalHour"></span>
+                              </div>
+                              <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Hrs</span>
                             </div>
-                            <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Hrs</span>
-                          </div>
-                          <!-- MINS -->
-                          <div class="my-1 flex items-center">
-                            <div class="flex">
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalMinutes >= 10 ? finalMinutes[0] : '0'"></span>
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalMinutes >= 10 ? finalMinutes[1] : finalMinutes"></span>
+                            <!-- MINS -->
+                            <div class="my-1 flex items-center">
+                              <div class="flex">
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalMinutes >= 10 ? finalMinutes[0] : '0'"></span>
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalMinutes >= 10 ? finalMinutes[1] : finalMinutes"></span>
+                              </div>
+                              <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Mins</span>
                             </div>
-                            <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Mins</span>
-                          </div>
-                          <!-- SECS -->
-                          <div class="my-1 flex items-center">
-                            <div class="flex">
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalSeconds >= 10 ? finalSeconds[0] : '0'"></span>
-                              <span
-                                class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
-                                x-text="finalSeconds >= 10 ? finalSeconds[1] : finalSeconds"></span>
+                            <!-- SECS -->
+                            <div class="my-1 flex items-center">
+                              <div class="flex">
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalSeconds >= 10 ? finalSeconds[0] : '0'"></span>
+                                <span
+                                  class="w-[23px] text-[#4D4D55] leading-9 mr-[3px] text-center rounded-md border border-white block bg-[linear-gradient(to_bottom,#fff_0%,#fff_50%,#f1f1f1_52%,#fff_100%)] px-[5px] h-[35px] font-['Roboto']"
+                                  x-text="finalSeconds >= 10 ? finalSeconds[1] : finalSeconds"></span>
+                              </div>
+                              <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Secs</span>
                             </div>
-                            <span class="-rotate-90 text-[#4D4D55] text-[10px] pb-1 font-['Roboto']">Secs</span>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!-- MODAL FOOTER SMALL -->
-                    <div class="bg-white pb-3.5 lg:py-3.5 lg:px-5 lg:hidden">
-                      <div class="flex flex-col gap-y-6">
-                        <!-- MODAL FOOTER LEFT -->
-                        <div class="w-full">
-                          <!-- SLIDER -->
-                          <div class="flex items-end justify-center h-20 lg:mx-[7%]" x-data="{range: 0}">
-                            <!-- SLIDER LABEL -->
-                            <span
-                              class="text-[#B5B4B8] text-left flex items-center justify-center pt-5 pr-4">Tickets</span>
-                            <!-- SLIDER CONTROL -->
-                            <div class="flex flex-col justify-center relative items-start grow">
-                              <div class="flex justify-between w-full">
-                                <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">1</span>
-                                <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">10</span>
+                      <!-- MODAL FOOTER SMALL -->
+                      <div class="bg-white pb-3.5 lg:py-3.5 lg:px-5 lg:hidden">
+                        <div class="flex flex-col gap-y-6">
+                          <!-- MODAL FOOTER LEFT -->
+                          <div class="w-full">
+                            <!-- SLIDER -->
+                            <div class="flex items-end justify-center h-20 lg:mx-[7%]" x-data="{range: 0}">
+                              <!-- SLIDER LABEL -->
+                              <span
+                                class="text-[#B5B4B8] text-left flex items-center justify-center pt-5 pr-4">Tickets</span>
+                              <!-- SLIDER CONTROL -->
+                              <div class="flex flex-col justify-center relative items-start grow">
+                                <div class="flex justify-between w-full">
+                                  <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">1</span>
+                                  <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">10</span>
+                                </div>
+                                <div class="w-full h-8 flex items-end relative">
+                                  <!-- BUBBLE -->
+                                  <span :style="range ? 'left: ' + (range * 10) + '%' : ''"
+                                    class="absolute -top-full -translate-x-1/2 w-9 h-9 bg-[#FF8200] text-white rounded flex items-center justify-center leading-none">
+                                    <span
+                                      class="relative flex items-center justify-center w-full h-full before:absolute before:w-3 before:h-3 before:bg-[#FF8200] before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:rotate-45"
+                                      x-text="range">
+                                    </span>
+                                  </span>
+                                  <input type="range" min="0" max="10" step="1" x-model="range"
+                                    class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
+                                  <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
+                                    :style="range ? 'width: ' + (range * 9.55) + '%' : ''"></div>
+                                </div>
                               </div>
-                              <div class="w-full h-8 flex items-end relative">
-                                <!-- BUBBLE -->
-                                <span :style="range ? 'left: ' + (range * 10) + '%' : ''"
-                                  class="absolute -top-full -translate-x-1/2 w-9 h-9 bg-[#FF8200] text-white rounded flex items-center justify-center leading-none">
-                                  <span
-                                    class="relative flex items-center justify-center w-full h-full before:absolute before:w-3 before:h-3 before:bg-[#FF8200] before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:rotate-45"
-                                    x-text="range">
+                              <!-- SLIDER LINK -->
+                              <a href="#"
+                                class="text-[#FF8200] text-sm hover:underline text-left flex items-center justify-center pt-5 pl-4">More
+                                »
+                              </a>
+                            </div>
+                          </div>
+                          <!-- MODAL FOOTER RIGHT -->
+                          <div class="w-full flex items-end">
+                            <div
+                              class="bg-[#FF8200] hover:bg-[#FF6A00] duration-200 transition-all rounded cursor-pointer mx-auto w-full">
+                              <a href="#"
+                                class="text-base py-3 px-0.5 flex flex-col items-center justify-center text-center group">
+                                <span
+                                  class="text-white w-full uppercase lg:text-[12px] xl:text-[15px] px-2 font-semibold leading-snug relative flex text-center justify-center">
+                                  Add to basket
+                                  <span class="-rotate-90 flex items-center justify-center ml-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                      class="w-5 h-5 group-hover:animate-bounce">
+                                      <path fill-rule="evenodd"
+                                        d="M14.77 4.21a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 011.08-1.04L10 8.168l3.71-3.938a.75.75 0 011.06-.02zm0 6a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 111.08-1.04L10 14.168l3.71-3.938a.75.75 0 011.06-.02z"
+                                        clip-rule="evenodd"></path>
+                                    </svg>
                                   </span>
                                 </span>
-                                <input type="range" min="0" max="10" step="1" x-model="range"
-                                  class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
-                                <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
-                                  :style="range ? 'width: ' + (range * 9.55) + '%' : ''"></div>
-                              </div>
+                              </a>
                             </div>
-                            <!-- SLIDER LINK -->
-                            <a href="#"
-                              class="text-[#FF8200] text-sm hover:underline text-left flex items-center justify-center pt-5 pl-4">More
-                              »
-                            </a>
-                          </div>
-                        </div>
-                        <!-- MODAL FOOTER RIGHT -->
-                        <div class="w-full flex items-end">
-                          <div
-                            class="bg-[#FF8200] hover:bg-[#FF6A00] duration-200 transition-all rounded cursor-pointer mx-auto w-full">
-                            <a href="#"
-                              class="text-base py-3 px-0.5 flex flex-col items-center justify-center text-center group">
-                              <span
-                                class="text-white w-full uppercase lg:text-[12px] xl:text-[15px] px-2 font-semibold leading-snug relative flex text-center justify-center">
-                                Add to basket
-                                <span class="-rotate-90 flex items-center justify-center ml-2">
-                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                    class="w-5 h-5 group-hover:animate-bounce">
-                                    <path fill-rule="evenodd"
-                                      d="M14.77 4.21a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 011.08-1.04L10 8.168l3.71-3.938a.75.75 0 011.06-.02zm0 6a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 111.08-1.04L10 14.168l3.71-3.938a.75.75 0 011.06-.02z"
-                                      clip-rule="evenodd"></path>
-                                  </svg>
-                                </span>
-                              </span>
-                            </a>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!-- TABS -->
-                    <div class="lg:px-2.5 pb-5 mt-3.5 relative lg:static" x-data="{
+                      <!-- TABS -->
+                      <div class="lg:px-2.5 pb-5 mt-3.5 relative lg:static" x-data="{
                       currentTab: 2,
                     }">
-                      <!-- TAB BUTTONS -->
-                      <ul class="flex gap-x-1 absolute -top-4 z-30 left-1/2 -translate-x-1/2 text-center">
-                        <li :class="currentTab === 1 ? 'bg-[#B5B4B8] text-white' : 'bg-white text-[#B5B4B8]'"
-                          class=" border border-[#B5B4B8]  inline-block font-['Roboto'] text-sm text-center grow shrink-0">
-                          <button type="button" @click="currentTab = 1" :class="{'hover:underline' : currentTab !== 1}"
-                            class="px-8 py-1.5 outline-none bg-transparent border-none w-full h-full block">
-                            Details
-                          </button>
-                        </li>
-                        <li :class="currentTab === 2 ? 'bg-[#B5B4B8] text-white' : 'bg-white text-[#B5B4B8]'"
-                          class=" border border-[#B5B4B8]  inline-block font-['Roboto'] text-sm  text-center grow shrink-0">
-                          <button type="button" @click="currentTab = 2" :class="{'hover:underline' : currentTab !== 2}"
-                            class="px-8 py-1.5 outline-none bg-transparent border-none w-full h-full block">
-                            Stats
-                          </button>
-                        </li>
-                        <li :class="currentTab === 3 ? 'bg-[#B5B4B8] text-white' : 'bg-white text-[#B5B4B8]'"
-                          class=" border border-[#B5B4B8]  inline-block font-['Roboto'] text-sm  text-center grow shrink-0">
-                          <button type="button" @click="currentTab = 3" :class="{'hover:underline' : currentTab !== 3}"
-                            class="px-8 py-1.5 outline-none bg-transparent border-none w-full h-full block">
-                            Reviews
-                          </button>
-                        </li>
-                      </ul>
-                      <!-- DIVIDER -->
-                      <div class="absolute top-[1px] left-0.5 right-5 bg-white h-6 z-20"></div>
-                      <!-- TAB CONTENT BOX -->
-                      <div
-                        class="border border-[#E9E9E9] py-5 px-3 lg:p-5 pt-8 lg:absolute inset-0 z-10 lg:overflow-auto text-[#696971]">
-                        <!-- BOX -->
-                        <div class="" x-show="currentTab === 1">
-                          <p class="mb-5">
-                            <strong>
-                              WIN the amazing URBAN LAND ROVER DISCOVERY plus £100,000 for TODAY ONLY!
-                            </strong>
-                          </p>
-                        </div>
-                        <!-- BOX -->
-                        <div class="" x-show="currentTab === 2">
-                          <div class="grid grid-cols-2 gap-x-[1%]">
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Retail
-                                  Price</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">£87,385</span>
+                        <!-- TAB BUTTONS -->
+                        <ul class="flex gap-x-1 absolute -top-4 z-30 left-1/2 -translate-x-1/2 text-center">
+                          <li :class="currentTab === 1 ? 'bg-[#B5B4B8] text-white' : 'bg-white text-[#B5B4B8]'"
+                            class=" border border-[#B5B4B8]  inline-block font-['Roboto'] text-sm text-center grow shrink-0">
+                            <button type="button" @click="currentTab = 1"
+                              :class="{'hover:underline' : currentTab !== 1}"
+                              class="px-8 py-1.5 outline-none bg-transparent border-none w-full h-full block">
+                              Details
+                            </button>
+                          </li>
+                          <li :class="currentTab === 2 ? 'bg-[#B5B4B8] text-white' : 'bg-white text-[#B5B4B8]'"
+                            class=" border border-[#B5B4B8]  inline-block font-['Roboto'] text-sm  text-center grow shrink-0">
+                            <button type="button" @click="currentTab = 2"
+                              :class="{'hover:underline' : currentTab !== 2}"
+                              class="px-8 py-1.5 outline-none bg-transparent border-none w-full h-full block">
+                              Stats
+                            </button>
+                          </li>
+                          <li :class="currentTab === 3 ? 'bg-[#B5B4B8] text-white' : 'bg-white text-[#B5B4B8]'"
+                            class=" border border-[#B5B4B8]  inline-block font-['Roboto'] text-sm  text-center grow shrink-0">
+                            <button type="button" @click="currentTab = 3"
+                              :class="{'hover:underline' : currentTab !== 3}"
+                              class="px-8 py-1.5 outline-none bg-transparent border-none w-full h-full block">
+                              Reviews
+                            </button>
+                          </li>
+                        </ul>
+                        <!-- DIVIDER -->
+                        <div class="absolute top-[1px] left-0.5 right-5 bg-white h-6 z-20"></div>
+                        <!-- TAB CONTENT BOX -->
+                        <div
+                          class="border border-[#E9E9E9] py-5 px-3 lg:p-5 pt-8 lg:absolute inset-0 z-10 lg:overflow-auto text-[#696971]">
+                          <!-- BOX -->
+                          <div class="" x-show="currentTab === 1">
+                            <p class="mb-5">
+                              <strong>
+                                WIN the amazing URBAN LAND ROVER DISCOVERY plus £100,000 for TODAY ONLY!
+                              </strong>
+                            </p>
+                          </div>
+                          <!-- BOX -->
+                          <div class="" x-show="currentTab === 2">
+                            <div class="grid grid-cols-2 gap-x-[1%]">
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Retail
+                                    Price</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">£87,385</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Cash
-                                  Alternative</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">£170,000</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Cash
+                                    Alternative</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">£170,000</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">0-62mph</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">0.7 secs</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">0-62mph</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">0.7 secs</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Top
-                                  Speed</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">130 mph</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Top
+                                    Speed</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">130 mph</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Power</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">203 bhp</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Power</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">203 bhp</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Displacement</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">3.0 ltr</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Displacement</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">3.0 ltr</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Engine
-                                  Position</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">Front</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Engine
+                                    Position</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">Front</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Drivetrain</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">AWD</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Drivetrain</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">AWD</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Retail
-                                  Price</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">£87,385</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Retail
+                                    Price</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">£87,385</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Cash
-                                  Alternative</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">£170,000</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Cash
+                                    Alternative</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">£170,000</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">0-62mph</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">0.7 secs</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">0-62mph</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">0.7 secs</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Top
-                                  Speed</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">130 mph</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Top
+                                    Speed</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">130 mph</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Power</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">203 bhp</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Power</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">203 bhp</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Displacement</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">3.0 ltr</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Displacement</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">3.0 ltr</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Engine
-                                  Position</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">Front</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Engine
+                                    Position</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">Front</span>
+                                </div>
                               </div>
-                            </div>
-                            <!-- CHIP -->
-                            <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
-                              <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
-                                </svg>
-                              </span>
-                              <div class="grow text-left ml-1.5">
-                                <span
-                                  class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Drivetrain</span>
-                                <span class="text-[#696971] font-normal leading-none text-base block">AWD</span>
+                              <!-- CHIP -->
+                              <div class="border-b border-[#E9E9E9] py-[1%] h-[60px] text-center flex items-center">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
+                                  </svg>
+                                </span>
+                                <div class="grow text-left ml-1.5">
+                                  <span
+                                    class="text-[#B5B4B8] font-semibold leading-none text-sm block mb-0.5">Drivetrain</span>
+                                  <span class="text-[#696971] font-normal leading-none text-base block">AWD</span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <!-- BOX -->
-                        <div class="" x-show="currentTab === 3">
-                          <p class="mb-5">
-                            <strong>
-                              WIN the amazing URBAN LAND ROVER DISCOVERY plus £100,000 for TODAY ONLY!
-                            </strong>
-                          </p>
-                          <p class="mb-5">
-                            “7-Seat practicality meets modern chic design” – that’s Urban Automotive’s tagline for their
-                            Land Rover Discovery model
-                            and we can’t help but agree with them!
-                          </p>
-                          <p class="mb-5">
-                            The Discovery always used to be the Range Rover’s understudy, but these days with the sleek
-                            yet imposing styling,
-                            spacious seven seat layout and high-quality interior it really is an impressive SUV to drive
-                            and own.
-                          </p>
-                          <p class="mb-5">
-                            But of course this isn’t any ordinary Discovery – yes it has the mighty 3-litre straight-6
-                            turbodiesel engine, but on
-                            the outside it has been given a serious makeover by Urban!
-                          </p>
-                          <p class="mb-5">
-                            Their trademark kit has been added, which includes a new full carbon fibre front bumper with
-                            exposed carbon air intakes
-                            and splitter, new carbon fibre rear diffuser, tweaked exhaust system with carbon tips and a
-                            set of very nice new 22”
-                            alloy wheels in a choice of designs and finishes. But they also fix one of the Discovery’s
-                            most controversial design
-                            elements – the offset rear plate which doesn’t really serve a purpose on this generation is
-                            relocated with a new central
-                            tailgate piece that really tidies up the rear end.
-                          </p>
-                          <p class="mb-5">
-                            We think this is one of the best looking cars that Urban produces - and it could be yours
-                            next week! Enter the BOTB
-                            competition here.
-                          </p>
+                          <!-- BOX -->
+                          <div class="" x-show="currentTab === 3">
+                            <p class="mb-5">
+                              <strong>
+                                WIN the amazing URBAN LAND ROVER DISCOVERY plus £100,000 for TODAY ONLY!
+                              </strong>
+                            </p>
+                            <p class="mb-5">
+                              “7-Seat practicality meets modern chic design” – that’s Urban Automotive’s tagline for
+                              their
+                              Land Rover Discovery model
+                              and we can’t help but agree with them!
+                            </p>
+                            <p class="mb-5">
+                              The Discovery always used to be the Range Rover’s understudy, but these days with the
+                              sleek
+                              yet imposing styling,
+                              spacious seven seat layout and high-quality interior it really is an impressive SUV to
+                              drive
+                              and own.
+                            </p>
+                            <p class="mb-5">
+                              But of course this isn’t any ordinary Discovery – yes it has the mighty 3-litre straight-6
+                              turbodiesel engine, but on
+                              the outside it has been given a serious makeover by Urban!
+                            </p>
+                            <p class="mb-5">
+                              Their trademark kit has been added, which includes a new full carbon fibre front bumper
+                              with
+                              exposed carbon air intakes
+                              and splitter, new carbon fibre rear diffuser, tweaked exhaust system with carbon tips and
+                              a
+                              set of very nice new 22”
+                              alloy wheels in a choice of designs and finishes. But they also fix one of the Discovery’s
+                              most controversial design
+                              elements – the offset rear plate which doesn’t really serve a purpose on this generation
+                              is
+                              relocated with a new central
+                              tailgate piece that really tidies up the rear end.
+                            </p>
+                            <p class="mb-5">
+                              We think this is one of the best looking cars that Urban produces - and it could be yours
+                              next week! Enter the BOTB
+                              competition here.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <!-- MODAL FOOTER LARGE -->
-                <div class="bg-white py-3.5 px-5 hidden lg:block">
-                  <div class="flex">
-                    <!-- MODAL FOOTER LEFT -->
-                    <div class="w-[58%] mr-[1%]">
-                      <!-- SLIDER -->
-                      <div class="flex items-end justify-center h-20 mx-[7%]" x-data="{range: 0}">
-                        <!-- SLIDER LABEL -->
-                        <span class="text-[#B5B4B8] text-left flex items-center justify-center pt-5 pr-4">Tickets</span>
-                        <!-- SLIDER CONTROL -->
-                        <div class="flex flex-col justify-center relative items-start grow">
-                          <div class="flex justify-between w-full">
-                            <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">1</span>
-                            <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">10</span>
+                  <!-- MODAL FOOTER LARGE -->
+                  <div class="bg-white py-3.5 px-5 hidden lg:block">
+                    <div class="flex">
+                      <!-- MODAL FOOTER LEFT -->
+                      <div class="w-[58%] mr-[1%]">
+                        <!-- SLIDER -->
+                        <div class="flex items-end justify-center h-20 mx-[7%]" x-data="{range: 0}">
+                          <!-- SLIDER LABEL -->
+                          <span
+                            class="text-[#B5B4B8] text-left flex items-center justify-center pt-5 pr-4">Tickets</span>
+                          <!-- SLIDER CONTROL -->
+                          <div class="flex flex-col justify-center relative items-start grow">
+                            <div class="flex justify-between w-full">
+                              <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">1</span>
+                              <span class=" text-[#55637d] bottom-[22px] py-px px-0.5">10</span>
+                            </div>
+                            <div class="w-full h-8 flex items-end relative">
+                              <!-- BUBBLE -->
+                              <span :style="range ? 'left: ' + (range * 10) + '%' : ''"
+                                class="absolute -top-full -translate-x-1/2 w-9 h-9 bg-[#FF8200] text-white rounded flex items-center justify-center leading-none">
+                                <span
+                                  class="relative flex items-center justify-center w-full h-full before:absolute before:w-3 before:h-3 before:bg-[#FF8200] before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:rotate-45"
+                                  x-text="range">
+                                </span>
+                              </span>
+                              <input type="range" min="0" max="10" step="1" x-model="range"
+                                class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
+                              <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
+                                :style="range ? 'width: ' + (range * 9.55) + '%' : ''"></div>
+                            </div>
                           </div>
-                          <div class="w-full h-8 flex items-end relative">
-                            <!-- BUBBLE -->
-                            <span :style="range ? 'left: ' + (range * 10) + '%' : ''"
-                              class="absolute -top-full -translate-x-1/2 w-9 h-9 bg-[#FF8200] text-white rounded flex items-center justify-center leading-none">
-                              <span
-                                class="relative flex items-center justify-center w-full h-full before:absolute before:w-3 before:h-3 before:bg-[#FF8200] before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:rotate-45"
-                                x-text="range">
+                          <!-- SLIDER LINK -->
+                          <a href="#"
+                            class="text-[#FF8200] text-sm hover:underline text-left flex items-center justify-center pt-5 pl-4">More
+                            »
+                          </a>
+                        </div>
+                      </div>
+                      <!-- MODAL FOOTER RIGHT -->
+                      <div class="w-[41%] flex items-end">
+                        <div
+                          class="bg-[#FF8200] hover:bg-[#FF6A00] duration-200 transition-all rounded cursor-pointer mx-auto w-full">
+                          <a href="#"
+                            class="text-base py-3 px-0.5 flex flex-col items-center justify-center text-center group">
+                            <span
+                              class="text-white w-full uppercase lg:text-[12px] xl:text-[15px] px-2 font-semibold leading-snug relative flex text-center justify-center">
+                              Add to basket
+                              <span class="-rotate-90 flex items-center justify-center ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                  class="w-5 h-5 group-hover:animate-bounce">
+                                  <path fill-rule="evenodd"
+                                    d="M14.77 4.21a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 011.08-1.04L10 8.168l3.71-3.938a.75.75 0 011.06-.02zm0 6a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 111.08-1.04L10 14.168l3.71-3.938a.75.75 0 011.06-.02z"
+                                    clip-rule="evenodd"></path>
+                                </svg>
                               </span>
                             </span>
-                            <input type="range" min="0" max="10" step="1" x-model="range"
-                              class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
-                            <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
-                              :style="range ? 'width: ' + (range * 9.55) + '%' : ''"></div>
-                          </div>
+                          </a>
                         </div>
-                        <!-- SLIDER LINK -->
-                        <a href="#"
-                          class="text-[#FF8200] text-sm hover:underline text-left flex items-center justify-center pt-5 pl-4">More
-                          »
-                        </a>
-                      </div>
-                    </div>
-                    <!-- MODAL FOOTER RIGHT -->
-                    <div class="w-[41%] flex items-end">
-                      <div
-                        class="bg-[#FF8200] hover:bg-[#FF6A00] duration-200 transition-all rounded cursor-pointer mx-auto w-full">
-                        <a href="#"
-                          class="text-base py-3 px-0.5 flex flex-col items-center justify-center text-center group">
-                          <span
-                            class="text-white w-full uppercase lg:text-[12px] xl:text-[15px] px-2 font-semibold leading-snug relative flex text-center justify-center">
-                            Add to basket
-                            <span class="-rotate-90 flex items-center justify-center ml-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-5 h-5 group-hover:animate-bounce">
-                                <path fill-rule="evenodd"
-                                  d="M14.77 4.21a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 011.08-1.04L10 8.168l3.71-3.938a.75.75 0 011.06-.02zm0 6a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 111.08-1.04L10 14.168l3.71-3.938a.75.75 0 011.06-.02z"
-                                  clip-rule="evenodd"></path>
-                              </svg>
-                            </span>
-                          </span>
-                        </a>
                       </div>
                     </div>
                   </div>
@@ -1601,12 +1614,27 @@
             </div>
           </div>
         </div>
-      </div>
+      </template>
     </div>
   </section>
   <!-- COMPETITION SECTION END -->
-  <!-- FILTER SECTION START -->
-  <section class="max-w-[1360px] mx-auto relative" x-data="{
+  <main class="h-full w-full">
+    <!-- FILTER SECTION START -->
+    <section :class="[dropdownOpen ? 'z-40': 'z-30', scrollUp ? 'sticky' : 'relative']
+      " class="max-w-[1360px] mx-auto top-[79px] lg:top-[80px] left-0 lg:border-y lg:border-[#C7C7C7]" @scroll.window="
+            newValue = window.pageYOffset;
+            if (oldValue > newValue) {
+              console.log('up')
+              scrollUp = true
+            }else{
+              scrollUp = false
+              console.log('down')
+            }
+            oldValue = newValue;
+      " x-data="{
+      oldValue: 0,
+      newValue: 0,
+      scrollUp: false,
       makes: [
         {title: 'All Makes', results: null},
         {title: 'Alfa Romeo', results: 21},
@@ -1673,340 +1701,374 @@
         {title: 'A to Z', url: '#'},
         {title: 'Z to A', url: '#'},
       ],
+      dropdownOpen: false,
     }">
-    <!-- FILTERS SECTION -->
-    <div class="">
-      <div class="py-[17px] pb-3.5 bg-[#F1F1F1]">
-        <!-- CONTAINER LARGE -->
-        <div class="hidden lg:block xl:max-w-[1200px] px-2.5 mx-auto relative">
-          <form>
-            <!-- FILTER PRIMARY -->
-            <div class="flex items-center gap-x-5">
-              <!-- SORT BY -->
-              <div class="flex bg-white rounded pr-5 justify-center items-center relative" x-data="{
+      <!-- FILTERS SECTION -->
+      <div class="">
+        <div class="py-[10px] bg-[#F1F1F1]">
+          <!-- CONTAINER LARGE -->
+          <div class="hidden lg:block xl:max-w-[1200px] px-2.5 mx-auto relative">
+            <form>
+              <!-- FILTER PRIMARY -->
+              <div class="flex items-center gap-x-5">
+                <!-- SORT BY -->
+                <div class="flex bg-white rounded pr-5 justify-center items-center relative" x-data="{
                           isOpen: false,
                           selected: 'Sort By',
                         }">
-                <input type="text" x-model="selected" x-ref="input" hidden>
-                <button
-                  class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
-                  @click.prevent="isOpen = !isOpen">
-                  <span class="text-xs font-['Roboto']">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                      class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
-                      <path fill-rule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                  </span>
-                  <span x-text="selected"></span>
-                </button>
-                <div
-                  class="absolute top-full w-full right-0 bg-white rounded-xl p-1.5 border border-[#CCCCCC] origin-top z-40"
-                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
-                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
-                  x-transition:leave="transition ease-in duration-300"
-                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
-                  <template x-for="item in options" :key="item.title">
-                    <div class="rounded-md overflow-hidden">
-                      <a :href="item.url" @click.prevent="
+                  <input type="text" x-model="selected" x-ref="input" hidden>
+                  <button
+                    class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
+                    @click.prevent="isOpen = !isOpen">
+                    <span class="text-xs font-['Roboto']">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
+                        <path fill-rule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </span>
+                    <span x-text="selected"></span>
+                  </button>
+                  <div
+                    class="absolute top-full w-full right-0 bg-white rounded-xl p-1.5 border border-[#CCCCCC] origin-top z-40"
+                    @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                    <template x-for="item in options" :key="item.title">
+                      <div class="rounded-md overflow-hidden">
+                        <a :href="item.url" @click.prevent="
                           selected = item.title; 
                           isOpen = false; 
                           "
-                        class="text-[#535353] font-semibold block px-3 text-[15px] leading-9 hover:font-bold hover:bg-[#F0F0F0]"
-                        x-text="item.title"></a>
-                    </div>
-                  </template>
+                          class="text-[#535353] font-semibold block px-3 text-[15px] leading-9 hover:font-bold hover:bg-[#F0F0F0]"
+                          x-text="item.title"></a>
+                      </div>
+                    </template>
+                  </div>
                 </div>
-              </div>
-              <!-- ALL MAKES -->
-              <div class="flex bg-white rounded pr-5 justify-center items-center" x-data="{
+                <!-- ALL MAKES -->
+                <div class="flex bg-white rounded pr-5 justify-center items-center" x-data="{
                 isOpen: false,
                 hovering: '',
                 checked: []
               }">
-                <button
-                  class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
-                  @click.prevent="isOpen = !isOpen">
-                  <span class="text-xs font-['Roboto']">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                      class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
-                      <path fill-rule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                  </span>
-                  <span>All Makes</span>
-                </button>
-                <div
-                  class="absolute top-full w-[939px] left-[calc((100%_-_939px)_/_2)] bg-white border border-[#C7C7C7] origin-top z-40"
-                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
-                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
-                  x-transition:leave="transition ease-in duration-300"
-                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
-                  <div class="w-full h-full relative py-1.5 px-2.5">
-                    <!-- CHEVRON -->
-                    <div
-                      class="absolute w-7 h-7 bg-white border-l border-t border-[#C7C7C7] rotate-45 -top-3.5 left-[10%]">
-                    </div>
-                    <!-- LOGO CONTAINER -->
-                    <ul class="flex m-2.5">
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/aston-martin.png" alt="Aston Martin" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                  <button
+                    class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
+                    @click.prevent="isOpen = !isOpen">
+                    <span class="text-xs font-['Roboto']">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
+                        <path fill-rule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </span>
+                    <span>All Makes</span>
+                  </button>
+                  <div
+                    class="absolute top-full w-[939px] left-[calc((100%_-_939px)_/_2)] bg-white border border-[#C7C7C7] origin-top z-40"
+                    @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                    <div class="w-full h-full relative py-1.5 px-2.5">
+                      <!-- CHEVRON -->
+                      <div
+                        class="absolute w-7 h-7 bg-white border-l border-t border-[#C7C7C7] rotate-45 -top-3.5 left-[10%]">
+                      </div>
+                      <!-- LOGO CONTAINER -->
+                      <ul class="flex m-2.5">
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/aston-martin.png" alt="Aston Martin" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                            if(checked.includes($el.alt)){
                             checked = checked.filter(item => item !== $el.alt);
                           }else{
                             checked.push($el.alt)
                            }
                           "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/porsche.png" alt="Porsche" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/porsche.png" alt="Porsche" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                            if(checked.includes($el.alt)){
                             checked = checked.filter(item => item !== $el.alt);
                           }else{
                             checked.push($el.alt)
                            }
                           "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/audi.png" alt="Audi" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/audi.png" alt="Audi" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                            if(checked.includes($el.alt)){
                             checked = checked.filter(item => item !== $el.alt);
                           }else{
                             checked.push($el.alt)
                            }
                           "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/bmw.png" alt="BMW" @mouseover="hovering = $el.alt" @mouseleave="hovering = ''"
-                          @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/bmw.png" alt="BMW" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                            if(checked.includes($el.alt)){
                             checked = checked.filter(item => item !== $el.alt);
                           }else{
                             checked.push($el.alt)
                            }
                           "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/mercedes.png" alt="Mercedes" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/mercedes.png" alt="Mercedes" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                            if(checked.includes($el.alt)){
                             checked = checked.filter(item => item !== $el.alt);
                           }else{
                             checked.push($el.alt)
                            }
                           "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/range-rover.png" alt="Range Rover" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/range-rover.png" alt="Range Rover" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                            if(checked.includes($el.alt)){
                             checked = checked.filter(item => item !== $el.alt);
                           }else{
                             checked.push($el.alt)
                            }
                           "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                    </ul>
-                    <!-- ALL MAKES OPTIONS -->
-                    <div class="columns-5">
-                      <!-- OPTION -->
-                      <template x-for="make in makes" :key="make.title">
-                        <div class="flex items-start relative mb-2">
-                          <input type="checkbox" :checked="checked.includes(make.title)" class="peer" hidden=""
-                            :id="make.title">
-                          <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                              class="w-4 h-4 stroke-2">
-                              <path fill-rule="evenodd"
-                                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                clip-rule="evenodd"></path>
-                            </svg>
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                      </ul>
+                      <!-- ALL MAKES OPTIONS -->
+                      <div class="columns-5">
+                        <!-- OPTION -->
+                        <template x-for="make in makes" :key="make.title">
+                          <div class="flex items-start relative mb-2">
+                            <input type="checkbox" :checked="checked.includes(make.title)" class="peer" hidden=""
+                              :id="make.title">
+                            <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-4 h-4 stroke-2">
+                                <path fill-rule="evenodd"
+                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                  clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                            <div class="absolute top-[0%] left-0 h-5 w-5"
+                              :class="make.title === hovering ? 'border-[#FF8200] border-2' : 'border-[#c7c7c7] border'">
+                            </div>
+                            <label class="ml-6 select-none cursor-pointer flex items-center gap-x-1  text-sm"
+                              :class="make.title === hovering ? 'text-[#FF8200]' :'text-[#696a71]'" :for="make.title">
+                              <span x-text="make.title"></span>
+                              <span class="">(<span x-text="make.results"></span>)</span>
+                            </label>
                           </div>
-                          <div class="absolute top-[0%] left-0 h-5 w-5"
-                            :class="make.title === hovering ? 'border-[#FF8200] border-2' : 'border-[#c7c7c7] border'">
-                          </div>
-                          <label class="ml-6 select-none cursor-pointer flex items-center gap-x-1  text-sm"
-                            :class="make.title === hovering ? 'text-[#FF8200]' :'text-[#696a71]'" :for="make.title">
-                            <span x-text="make.title"></span>
-                            <span class="">(<span x-text="make.results"></span>)</span>
-                          </label>
-                        </div>
-                      </template>
+                        </template>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- ALL STYLES -->
-              <div class="flex bg-white rounded pr-5 justify-center items-center" x-data="{
+                <!-- ALL STYLES -->
+                <div class="flex bg-white rounded pr-5 justify-center items-center" x-data="{
                               isOpen: false,
                               hovering: '',
                               checked: []
                             }">
-                <button
-                  class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
-                  @click.prevent="isOpen = !isOpen">
-                  <span class="text-xs font-['Roboto']">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                      class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
-                      <path fill-rule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                  </span>
-                  <span>All Styles</span>
-                </button>
-                <div
-                  class="absolute top-full w-[939px] left-[calc((100%_-_939px)_/_2)] bg-white border border-[#C7C7C7] origin-top z-40"
-                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
-                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
-                  x-transition:leave="transition ease-in duration-300"
-                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
-                  <div class="w-full h-full relative py-1.5 px-2.5">
-                    <!-- CHEVRON -->
-                    <div
-                      class="absolute w-7 h-7 bg-white border-l border-t border-[#C7C7C7] rotate-45 -top-3.5 left-[30%]">
-                    </div>
-                    <!-- LOGO CONTAINER -->
-                    <ul class="flex m-2.5">
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/aston-martin.png" alt="SUV / 4X4" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                  <button
+                    class="text-base min-w-[135px] font-['Roboto'] text-[#696A71] h-7 pr-1.5 flex items-center justify-center gap-x-1"
+                    @click.prevent="isOpen = !isOpen">
+                    <span class="text-xs font-['Roboto']">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        class="w-6 h-6 transition-all" :class="{'rotate-180' : isOpen}">
+                        <path fill-rule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </span>
+                    <span>All Styles</span>
+                  </button>
+                  <div
+                    class="absolute top-full w-[939px] left-[calc((100%_-_939px)_/_2)] bg-white border border-[#C7C7C7] origin-top z-40"
+                    @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                    <div class="w-full h-full relative py-1.5 px-2.5">
+                      <!-- CHEVRON -->
+                      <div
+                        class="absolute w-7 h-7 bg-white border-l border-t border-[#C7C7C7] rotate-45 -top-3.5 left-[30%]">
+                      </div>
+                      <!-- LOGO CONTAINER -->
+                      <ul class="flex m-2.5">
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/aston-martin.png" alt="SUV / 4X4" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                                          if(checked.includes($el.alt)){
                                           checked = checked.filter(item => item !== $el.alt);
                                         }else{
                                           checked.push($el.alt)
                                          }
                                         "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/porsche.png" alt="Convertibles" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/porsche.png" alt="Convertibles" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                                          if(checked.includes($el.alt)){
                                           checked = checked.filter(item => item !== $el.alt);
                                         }else{
                                           checked.push($el.alt)
                                          }
                                         "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/audi.png" alt="Coupes" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/audi.png" alt="Coupes" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                                          if(checked.includes($el.alt)){
                                           checked = checked.filter(item => item !== $el.alt);
                                         }else{
                                           checked.push($el.alt)
                                          }
                                         "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/bmw.png" alt="Hot Hatch" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/bmw.png" alt="Hot Hatch" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                                          if(checked.includes($el.alt)){
                                           checked = checked.filter(item => item !== $el.alt);
                                         }else{
                                           checked.push($el.alt)
                                          }
                                         "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/mercedes.png" alt="EV / Hybrid" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/mercedes.png" alt="EV / Hybrid" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                                          if(checked.includes($el.alt)){
                                           checked = checked.filter(item => item !== $el.alt);
                                         }else{
                                           checked.push($el.alt)
                                          }
                                         "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                      <li class="p-2.5 cursor-pointer">
-                        <img src="images/range-rover.png" alt="Sports Cars" @mouseover="hovering = $el.alt"
-                          @mouseleave="hovering = ''" @click="
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                        <li class="p-2.5 cursor-pointer">
+                          <img src="images/range-rover.png" alt="Sports Cars" @mouseover="hovering = $el.alt"
+                            @mouseleave="hovering = ''" @click="
                                          if(checked.includes($el.alt)){
                                           checked = checked.filter(item => item !== $el.alt);
                                         }else{
                                           checked.push($el.alt)
                                          }
                                         "
-                          class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
-                      </li>
-                    </ul>
-                    <!-- ALL MAKES OPTIONS -->
-                    <div class="columns-5">
-                      <!-- OPTION -->
-                      <template x-for="make in styles" :key="make.title">
-                        <div class="flex items-start relative mb-2">
-                          <input type="checkbox" :checked="checked.includes(make.title)" class="peer" hidden=""
-                            :id="make.title">
-                          <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                              class="w-4 h-4 stroke-2">
-                              <path fill-rule="evenodd"
-                                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                clip-rule="evenodd"></path>
-                            </svg>
+                            class="max-w-full h-auto grayscale opacity-50 transition-all hover:grayscale-0 hover:opacity-100">
+                        </li>
+                      </ul>
+                      <!-- ALL MAKES OPTIONS -->
+                      <div class="columns-5">
+                        <!-- OPTION -->
+                        <template x-for="make in styles" :key="make.title">
+                          <div class="flex items-start relative mb-2">
+                            <input type="checkbox" :checked="checked.includes(make.title)" class="peer" hidden=""
+                              :id="make.title">
+                            <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-4 h-4 stroke-2">
+                                <path fill-rule="evenodd"
+                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                  clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                            <div class="absolute top-[0%] left-0 h-5 w-5"
+                              :class="make.title === hovering ? 'border-[#FF8200] border-2' : 'border-[#c7c7c7] border'">
+                            </div>
+                            <label class="ml-6 select-none cursor-pointer flex items-center gap-x-1  text-sm"
+                              :class="make.title === hovering ? 'text-[#FF8200]' :'text-[#696a71]'" :for="make.title">
+                              <span x-text="make.title"></span>
+                              <span class="">(<span x-text="make.results"></span>)</span>
+                            </label>
                           </div>
-                          <div class="absolute top-[0%] left-0 h-5 w-5"
-                            :class="make.title === hovering ? 'border-[#FF8200] border-2' : 'border-[#c7c7c7] border'">
-                          </div>
-                          <label class="ml-6 select-none cursor-pointer flex items-center gap-x-1  text-sm"
-                            :class="make.title === hovering ? 'text-[#FF8200]' :'text-[#696a71]'" :for="make.title">
-                            <span x-text="make.title"></span>
-                            <span class="">(<span x-text="make.results"></span>)</span>
-                          </label>
-                        </div>
-                      </template>
+                        </template>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- TICKETS SLIDER -->
-              <div class="flex pr-5 justify-center items-center relative" x-data="{range: 0}">
-                <div class="flex flex-col justify-center relative items-start grow">
-                  <div class="flex justify-center w-full">
-                    <span class=" text-[#55637d] bottom-[22px] leading-none px-0.5 translate-y-2.5">Ticket Price (£)
+                <!-- TICKETS SLIDER -->
+                <div class="flex pr-5 justify-center items-center relative" x-data="{range: 0}">
+                  <div class="flex flex-col justify-center relative items-start grow">
+                    <div class="flex justify-center w-full">
+                      <span class=" text-[#55637d] bottom-[22px] leading-none px-0.5 translate-y-2.5">Ticket Price (£)
+                      </span>
+                    </div>
+                    <div class="w-full h-8 flex items-end relative">
+                      <input type="range" min="0" max="5" step="1" x-model="range"
+                        class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
+                      <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
+                        :style="range ? 'width: ' + (range * 18) + '%' : ''">
+                      </div>
+                    </div>
+                    <div class="flex justify-between w-full">
+                      <span class=" text-[#55637d] bottom-[22px] py-px px-0.5 text-sm">0</span>
+                      <span class=" text-[#55637d] bottom-[22px] py-px px-0.5 text-sm">5</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- RESET BUTTON -->
+                <div class="flex pr-5 justify-center items-center relative">
+                  <button type="button"
+                    class="p-2 pl-1.5 rounded-full bg-[#DDDDDD] border-2 border-white transition-all hover:bg-[#6878B3] hover:scale-110">
+                    <img src="images/icon-reset.png" alt="Reset" class="block">
+                  </button>
+                </div>
+                <!-- SEARCH BAR -->
+                <div class="flex pr-5 justify-center items-center relative">
+                  <div class="relative flex max-w-xs h-8">
+                    <input type="search" class="px-8 w-full h-full text-[#79808E] text-[15px]  outline-none">
+                    <span class="absolute top-1/2 -translate-y-1/2 left-2 text-[#79808E]">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path fill-rule="evenodd"
+                          d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                          clip-rule="evenodd"></path>
+                      </svg>
                     </span>
                   </div>
-                  <div class="w-full h-8 flex items-end relative">
-                    <input type="range" min="0" max="5" step="1" x-model="range"
-                      class="w-full mb-2 h-1 bg-[#b5b4b8] rounded-lg appearance-none cursor-pointer">
-                    <div class="absolute mb-2 h-1 bg-[#FF8200] rounded-lg"
-                      :style="range ? 'width: ' + (range * 18) + '%' : ''">
-                    </div>
-                  </div>
-                  <div class="flex justify-between w-full">
-                    <span class=" text-[#55637d] bottom-[22px] py-px px-0.5 text-sm">0</span>
-                    <span class=" text-[#55637d] bottom-[22px] py-px px-0.5 text-sm">5</span>
-                  </div>
+                </div>
+                <!-- MORE BUTTON -->
+                <div class="flex pr-5 justify-center items-center relative">
+                  <button type="button" class=" text-sm group text-left flex items-center justify-center">
+                    <span class="text-[#FF8200] pr-3 group-hover:underline">More</span>
+                    <span class="text-xs font-['Roboto']">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        class="w-6 h-6 transition-all">
+                        <path fill-rule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </span>
+                  </button>
                 </div>
               </div>
-              <!-- RESET BUTTON -->
-              <div class="flex pr-5 justify-center items-center relative">
-                <button type="button"
-                  class="p-2 pl-1.5 rounded-full bg-[#DDDDDD] border-2 border-white transition-all hover:bg-[#6878B3] hover:scale-110">
-                  <img src="images/icon-reset.png" alt="Reset" class="block">
-                </button>
-              </div>
-              <!-- SEARCH BAR -->
-              <div class="flex pr-5 justify-center items-center relative">
-                <div class="relative flex max-w-xs h-8">
-                  <input type="search" class="px-8 w-full h-full text-[#79808E] text-[15px]  outline-none">
-                  <span class="absolute top-1/2 -translate-y-1/2 left-2 text-[#79808E]">
+            </form>
+          </div>
+          <!-- CONTAINER SMALL -->
+          <div class="p-2.5 lg:hidden">
+            <div class="flex w-full">
+              <!-- SEARCH BAR SMALL -->
+              <div class="pr-2 grow">
+                <div class="relative flex w-[75%] h-11">
+                  <input type="search" class="px-8 w-full h-full text-[#79808E] text-base py-1.5 outline-none rounded">
+                  <span class="absolute top-1/2 -translate-y-1/2 right-2 text-[#FF8200]">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                       <path fill-rule="evenodd"
                         d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
@@ -2015,69 +2077,36 @@
                   </span>
                 </div>
               </div>
-              <!-- MORE BUTTON -->
-              <div class="flex pr-5 justify-center items-center relative">
-                <button type="button" class=" text-sm group text-left flex items-center justify-center">
-                  <span class="text-[#FF8200] pr-3 group-hover:underline">More</span>
-                  <span class="text-xs font-['Roboto']">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                      class="w-6 h-6 transition-all">
-                      <path fill-rule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- CONTAINER SMALL -->
-        <div class="p-2.5 lg:hidden">
-          <div class="flex w-full">
-            <!-- SEARCH BAR SMALL -->
-            <div class="pr-2 grow">
-              <div class="relative flex w-[75%] h-11">
-                <input type="search" class="px-8 w-full h-full text-[#79808E] text-base py-1.5 outline-none rounded">
-                <span class="absolute top-1/2 -translate-y-1/2 right-2 text-[#FF8200]">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                    <path fill-rule="evenodd"
-                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                </span>
-              </div>
-            </div>
-            <!-- SORT BY SMALL -->
-            <div class="pr-2 relative" x-data="{
+              <!-- SORT BY SMALL -->
+              <div class="pr-2 relative" x-data="{
               isOpen: false,
               selected: 'Sort By',
             }">
-              <input type="text" x-model="selected" x-ref="inputSm" hidden>
-              <button @click.prevent="isOpen = !isOpen" type="button"
-                class="h-11 w-11 bg-white p-2 rounded flex items-center justify-center">
-                <img src="images/sort-by-orange.png" alt="Sort by" class="w-[30px] h-[30px] object-contain">
-              </button>
-              <div
-                class="absolute top-full w-[200px] right-0 bg-white rounded-xl p-1.5 border border-[#CCCCCC] origin-top z-40"
-                @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
-                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-y-100"
-                x-transition:leave-end="opacity-20 scale-y-0">
-                <template x-for="item in options" :key="item.title">
-                  <div class="rounded-md overflow-hidden">
-                    <a :href="item.url" @click.prevent="
+                <input type="text" x-model="selected" x-ref="inputSm" hidden>
+                <button @click.prevent="isOpen = !isOpen" type="button"
+                  class="h-11 w-11 bg-white p-2 rounded flex items-center justify-center">
+                  <img src="images/sort-by-orange.png" alt="Sort by" class="w-[30px] h-[30px] object-contain">
+                </button>
+                <div
+                  class="absolute top-full w-[200px] right-0 bg-white rounded-xl p-1.5 border border-[#CCCCCC] origin-top z-40"
+                  @click.away="isOpen = false" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                  x-transition:leave="transition ease-in duration-300"
+                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                  <template x-for="item in options" :key="item.title">
+                    <div class="rounded-md overflow-hidden">
+                      <a :href="item.url" @click.prevent="
                                         selected = item.title; 
                                         isOpen = false; 
                                         "
-                      class="text-[#535353] font-semibold block px-3 text-[15px] leading-9 hover:font-bold hover:bg-[#F0F0F0]"
-                      x-text="item.title"></a>
-                  </div>
-                </template>
+                        class="text-[#535353] font-semibold block px-3 text-[15px] leading-9 hover:font-bold hover:bg-[#F0F0F0]"
+                        x-text="item.title"></a>
+                    </div>
+                  </template>
+                </div>
               </div>
-            </div>
-            <!-- FITLER SMALL -->
-            <div class="pr-2 relative" x-data="{
+              <!-- FITLER SMALL -->
+              <div class="pr-2 relative" x-data="{
                           isOpen: false,
                           selected: 'Sort By',
                           bodyOverflow: function () {
@@ -2085,112 +2114,112 @@
                             document.querySelector('body').classList.add(this.isOpen ? 'overflow-hidden' : 'overflow-visible');
                             }
                         }">
-              <input type="text" x-model="selected" x-ref="inputSm" hidden>
-              <button @click.prevent="isOpen = !isOpen; bodyOverflow()" type="button"
-                class="h-11 w-11 text-[#FF8200] bg-white p-2 rounded flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                </svg>
-              </button>
-              <div class="fixed inset-0 w-full h-screen bg-white origin-top z-50" x-show="isOpen"
-                x-transition:enter="transition ease-out duration-300" x-transition:enter-start="scale-y-0 opacity-20"
-                x-transition:enter-end="scale-y-100 opacity-100" x-transition:leave="transition ease-in duration-300"
-                x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
-                <!-- FILTER HEADER -->
-                <div class="p-8 border-b border-[#F1F1F1] flex justify-between items-center">
-                  <!-- HEADING -->
-                  <div class="text-[#696971] text-2xl">Filters</div>
-                  <!-- CLOSE BTN -->
-                  <button type="button" @click="isOpen = false; bodyOverflow()"
-                    class="uppercase font-semibold border-none outline-none bg-transparent flex items-center gap-x-1 text-[#696971]">
-                    Clear All
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path
-                          d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-                <!-- FILTER OPTIONS -->
-                <div class="h-[calc(100%_-_215px)] px-8 overflow-y-auto grid grid-cols-2">
-                  <!-- MAKES -->
-                  <div class="pt-8">
-                    <h2 class="uppercase text-[#696971] text-lg mb-4">Makes</h2>
-                    <ul class="">
-                      <!-- OPTION -->
-                      <template x-for="make in makes" :key="make.title">
-                        <li>
-                          <div class="flex items-start relative mb-2">
-                            <input type="checkbox" class="peer" hidden="" :id="make.title + 'Sm'">
-                            <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-4 h-4 stroke-2">
-                                <path fill-rule="evenodd"
-                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                  clip-rule="evenodd"></path>
-                              </svg>
-                            </div>
-                            <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
-                            </div>
-                            <label
-                              class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
-                              :for="make.title + 'Sm'">
-                              <span x-text="make.title"></span>
-                              <span class="">(<span x-text="make.results"></span>)</span>
-                            </label>
-                          </div>
-                        </li>
-                      </template>
-                    </ul>
+                <input type="text" x-model="selected" x-ref="inputSm" hidden>
+                <button @click.prevent="isOpen = !isOpen; bodyOverflow(); dropdownOpen = true" type="button"
+                  class="h-11 w-11 text-[#FF8200] bg-white p-2 rounded flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                  </svg>
+                </button>
+                <div class="fixed inset-0 w-full h-screen bg-white origin-top z-[9999]" x-show="isOpen"
+                  x-transition:enter="transition ease-out duration-300" x-transition:enter-start="scale-y-0 opacity-20"
+                  x-transition:enter-end="scale-y-100 opacity-100" x-transition:leave="transition ease-in duration-300"
+                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                  <!-- FILTER HEADER -->
+                  <div class="p-8 border-b border-[#F1F1F1] flex justify-between items-center">
+                    <!-- HEADING -->
+                    <div class="text-[#696971] text-2xl">Filters</div>
+                    <!-- CLOSE BTN -->
+                    <button type="button" @click="isOpen = false; bodyOverflow(); dropdownOpen = false"
+                      class="uppercase font-semibold border-none outline-none bg-transparent flex items-center gap-x-1 text-[#696971]">
+                      Clear All
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                          <path
+                            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                        </svg>
+                      </span>
+                    </button>
                   </div>
-                  <!-- STYLES -->
-                  <div class="pt-8">
-                    <h2 class="uppercase text-[#696971] text-lg mb-4">Styles</h2>
-                    <ul class="">
-                      <!-- OPTION -->
-                      <template x-for="style in styles" :key="style.title">
-                        <li>
-                          <div class="flex items-start relative mb-2">
-                            <input type="checkbox" class="peer" hidden="" :id="style.title + 'Sm'">
-                            <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-4 h-4 stroke-2">
-                                <path fill-rule="evenodd"
-                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                  clip-rule="evenodd"></path>
-                              </svg>
+                  <!-- FILTER OPTIONS -->
+                  <div class="h-[calc(100%_-_215px)] px-8 overflow-y-auto grid grid-cols-2">
+                    <!-- MAKES -->
+                    <div class="pt-8">
+                      <h2 class="uppercase text-[#696971] text-lg mb-4">Makes</h2>
+                      <ul class="">
+                        <!-- OPTION -->
+                        <template x-for="make in makes" :key="make.title">
+                          <li>
+                            <div class="flex items-start relative mb-2">
+                              <input type="checkbox" class="peer" hidden="" :id="make.title + 'Sm'">
+                              <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                  class="w-4 h-4 stroke-2">
+                                  <path fill-rule="evenodd"
+                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                    clip-rule="evenodd"></path>
+                                </svg>
+                              </div>
+                              <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                              </div>
+                              <label
+                                class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
+                                :for="make.title + 'Sm'">
+                                <span x-text="make.title"></span>
+                                <span class="">(<span x-text="make.results"></span>)</span>
+                              </label>
                             </div>
-                            <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                          </li>
+                        </template>
+                      </ul>
+                    </div>
+                    <!-- STYLES -->
+                    <div class="pt-8">
+                      <h2 class="uppercase text-[#696971] text-lg mb-4">Styles</h2>
+                      <ul class="">
+                        <!-- OPTION -->
+                        <template x-for="style in styles" :key="style.title">
+                          <li>
+                            <div class="flex items-start relative mb-2">
+                              <input type="checkbox" class="peer" hidden="" :id="style.title + 'Sm'">
+                              <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                  class="w-4 h-4 stroke-2">
+                                  <path fill-rule="evenodd"
+                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                    clip-rule="evenodd"></path>
+                                </svg>
+                              </div>
+                              <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                              </div>
+                              <label
+                                class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
+                                :for="style.title + 'Sm'">
+                                <span x-text="style.title"></span>
+                                <span class="">(<span x-text="style.results"></span>)</span>
+                              </label>
                             </div>
-                            <label
-                              class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
-                              :for="style.title + 'Sm'">
-                              <span x-text="style.title"></span>
-                              <span class="">(<span x-text="style.results"></span>)</span>
-                            </label>
-                          </div>
-                        </li>
-                      </template>
-                    </ul>
+                          </li>
+                        </template>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!-- FILTER FOOTER -->
-                <div class="py-6 border-t border-[#E9E9E9] flex justify-center items-center">
-                  <a href="#" class="uppercase bg-[#FF8200] py-2.5 px-7 text-white font-semibold">View (156) cars</a>
+                  <!-- FILTER FOOTER -->
+                  <div class="py-6 border-t border-[#E9E9E9] flex justify-center items-center">
+                    <a href="#" class="uppercase bg-[#FF8200] py-2.5 px-7 text-white font-semibold">View (156) cars</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- FILTER SECTION END -->
-  <!-- MAIN RESULTS SECTION START -->
-  <section class="pt-4 bg-[#F1F1F1] max-w-[1360px] mx-auto" x-data="{
+    </section>
+    <!-- FILTER SECTION END -->
+    <!-- MAIN RESULTS SECTION START -->
+    <section class="pt-4 bg-[#F1F1F1] max-w-[1360px] mx-auto" x-data="{
       cars: [
         {
           landscape: false,
@@ -2544,100 +2573,27 @@
         }
       ]
     }">
-    <div
-      class="max-w-[1340px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2.5 md:gap-x-4 gap-y-2.5 grid-flow-dense p-2.5">
-      <template x-for="(car, index) in cars" :key="index">
-        <div
-          :class="car.landscape ? 'bg-white p-5 pb-2.5 transition-all min-h-[205px] sm:min-h-[258px] lg:hover:scale-[1.03] duration-300 col-span-2 lg:hover:shadow-md ' : 'bg-white p-5 pb-2.5 transition-all min-h-[205px] sm:min-h-[258px] lg:hover:scale-105 duration-300 lg:hover:shadow-md'">
-          <!-- CARD SPAN 1-->
-          <template x-if="!car.landscape">
-            <div class="" x-data="{
+      <div
+        class="max-w-[1340px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2.5 md:gap-x-4 gap-y-2.5 grid-flow-dense p-2.5">
+        <template x-for="(car, index) in cars" :key="index">
+          <div
+            :class="car.landscape ? 'bg-white p-5 pb-2.5 transition-all min-h-[205px] sm:min-h-[258px] lg:hover:scale-[1.03] duration-300 col-span-2 lg:hover:shadow-md ' : 'bg-white p-5 pb-2.5 transition-all min-h-[205px] sm:min-h-[258px] lg:hover:scale-105 duration-300 lg:hover:shadow-md'">
+            <!-- CARD SPAN 1-->
+            <template x-if="!car.landscape">
+              <div class="" x-data="{
           hover: false,
         }" @mouseenter="hover = true" @mouseleave="hover = false">
-              <!-- TITLE & PRICE -->
-              <span
-                class="drop-shadow-sm cursor-pointer text-base mb-1.5 font-bold text-ellipsis whitespace-nowrap overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between text-[#696971]">
-                <span x-text="car.title"></span>
-                <span class="text-[#A2A2A2] font-['Roboto'] text-sm" x-text="car.price"></span>
-              </span>
-              <!-- MODEL -->
-              <span :class="{'md:hidden' : hover}"
-                class="text-ellipsis whitespace-nowrap overflow-hidden cursor-pointer text-sm text-[#A2A2A2] h-7 block"
-                x-text="car.model">
-
-              </span>
-              <!-- TICKETS -->
-              <div :class="{'md:flex' : hover}" class="hidden">
-                <div class="bg-[#f2f2f2] w-full">
-                  <ul class="flex">
-                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
-                      <a href="#"
-                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">1</a>
-                    </li>
-                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
-                      <a href="#"
-                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">5</a>
-                    </li>
-                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
-                      <a href="#"
-                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">10</a>
-                    </li>
-                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
-                      <a href="#"
-                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">20</a>
-                    </li>
-                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
-                      <a href="#"
-                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">50</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="w-7 h-7 bg-[#FF8200] flex items-center justify-center">
-                  <a href="#">
-                    <img src="images/icon-plus.png" alt="plus" class="max-w-full h-auto">
-                  </a>
-                </div>
-              </div>
-              <!-- IMAGE -->
-              <div class="sm:h-[150px] mb-3.5 sm:mb-0 sm:min-h-[140px] cursor-pointer">
-                <a :href="car.url" class="block h-full relative">
-                  <div class="w-full h-full min-h-[80px]">
-                    <img :src="car.image" :alt="car.title" :title="car.title" :class="{'lg:scale-125': hover}"
-                      class="max-w-full max-h-[120px] h-auto mt-6 mx-auto transition-all object-contain object-center duration-300">
-                  </div>
-                </a>
-              </div>
-              <!-- CASH PRIZE -->
-              <div class="w-full flex items-center justify-center">
-                <a :href="car.url"
-                  class="group-hover:hidden block font-['Roboto'] uppercase text-[#696A71] whitespace-nowrap text-center py-1.5 px-2.5 my-1 rounded-md bg-white border border-[#696A71] text-xs mx-auto transition-all hover:shadow-lg"
-                  :class="{'pointer-events-none cursor-text md:pointer-events-auto md:cursor-pointer' : hover}">
-                  <span :class="{'md:hidden' : hover}">
-                    <span>OR TAKE</span>
-                    <span class="text-[#FF8200]" x-text="car.cash"></span>
-                    <span>CASH</span>
-                  </span>
-                  <span :class="{'md:block': hover}" class="px-4 hidden">QUICK VIEW »</span>
-                </a>
-              </div>
-            </div>
-          </template>
-          <!-- CARD SPAN 2-->
-          <template x-if="car.landscape">
-            <div class="flex flex-wrap" x-data="{
-                hover: false,
-              }" @mouseenter="hover = true" @mouseleave="hover = false">
-              <!-- TITLE & PRIZE -->
-              <span
-                class="w-full drop-shadow-sm cursor-pointer text-base mb-1.5 font-bold text-ellipsis whitespace-nowrap overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between text-[#696971]">
-                <span x-text="car.title"></span>
-                <span class="text-[#A2A2A2] font-['Roboto'] text-sm" x-text="car.price"></span>
-              </span>
-              <div class="w-[40%] flex flex-col justify-between">
+                <!-- TITLE & PRICE -->
+                <span
+                  class="drop-shadow-sm cursor-pointer text-base mb-1.5 font-bold text-ellipsis whitespace-nowrap overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between text-[#696971]">
+                  <span x-text="car.title"></span>
+                  <span class="text-[#A2A2A2] font-['Roboto'] text-sm" x-text="car.price"></span>
+                </span>
                 <!-- MODEL -->
                 <span :class="{'md:hidden' : hover}"
                   class="text-ellipsis whitespace-nowrap overflow-hidden cursor-pointer text-sm text-[#A2A2A2] h-7 block"
                   x-text="car.model">
+
                 </span>
                 <!-- TICKETS -->
                 <div :class="{'md:flex' : hover}" class="hidden">
@@ -2665,31 +2621,23 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="w-7 h-7 bg-[#FF8200] flex items-center justify-center shrink-0">
+                  <div class="w-7 h-7 bg-[#FF8200] flex items-center justify-center">
                     <a href="#">
                       <img src="images/icon-plus.png" alt="plus" class="max-w-full h-auto">
                     </a>
                   </div>
                 </div>
-                <!-- LOGO -->
-                <div class="pb-14">
-                  <a :href="car.url">
-                    <img :src="car.logo" :alt="car.title" :title="car.title" class="max-w-[120px] max-h-[70px] block">
-                  </a>
-                </div>
-              </div>
-              <div class="w-[60%]">
                 <!-- IMAGE -->
                 <div class="sm:h-[150px] mb-3.5 sm:mb-0 sm:min-h-[140px] cursor-pointer">
                   <a :href="car.url" class="block h-full relative">
                     <div class="w-full h-full min-h-[80px]">
                       <img :src="car.image" :alt="car.title" :title="car.title" :class="{'lg:scale-125': hover}"
-                        class="max-w-full max-h-[150px] h-auto mt-6 mx-auto transition-all object-contain object-center duration-300">
+                        class="max-w-full max-h-[120px] h-auto mt-6 mx-auto transition-all object-contain object-center duration-300">
                     </div>
                   </a>
                 </div>
                 <!-- CASH PRIZE -->
-                <div class="w-full flex items-center justify-center mt-4">
+                <div class="w-full flex items-center justify-center">
                   <a :href="car.url"
                     class="group-hover:hidden block font-['Roboto'] uppercase text-[#696A71] whitespace-nowrap text-center py-1.5 px-2.5 my-1 rounded-md bg-white border border-[#696A71] text-xs mx-auto transition-all hover:shadow-lg"
                     :class="{'pointer-events-none cursor-text md:pointer-events-auto md:cursor-pointer' : hover}">
@@ -2702,13 +2650,158 @@
                   </a>
                 </div>
               </div>
-            </div>
-          </template>
+            </template>
+            <!-- CARD SPAN 2-->
+            <template x-if="car.landscape">
+              <div class="flex flex-wrap" x-data="{
+                hover: false,
+              }" @mouseenter="hover = true" @mouseleave="hover = false">
+                <!-- TITLE & PRIZE -->
+                <span
+                  class="w-full drop-shadow-sm cursor-pointer text-base mb-1.5 font-bold text-ellipsis whitespace-nowrap overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between text-[#696971]">
+                  <span x-text="car.title"></span>
+                  <span class="text-[#A2A2A2] font-['Roboto'] text-sm" x-text="car.price"></span>
+                </span>
+                <div class="w-[40%] flex flex-col justify-between">
+                  <!-- MODEL -->
+                  <span :class="{'md:hidden' : hover}"
+                    class="text-ellipsis whitespace-nowrap overflow-hidden cursor-pointer text-sm text-[#A2A2A2] h-7 block"
+                    x-text="car.model">
+                  </span>
+                  <!-- TICKETS -->
+                  <div :class="{'md:flex' : hover}" class="hidden">
+                    <div class="bg-[#f2f2f2] w-full">
+                      <ul class="flex">
+                        <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                          <a href="#"
+                            class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">1</a>
+                        </li>
+                        <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                          <a href="#"
+                            class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">5</a>
+                        </li>
+                        <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                          <a href="#"
+                            class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">10</a>
+                        </li>
+                        <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                          <a href="#"
+                            class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">20</a>
+                        </li>
+                        <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                          <a href="#"
+                            class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">50</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="w-7 h-7 bg-[#FF8200] flex items-center justify-center shrink-0">
+                      <a href="#">
+                        <img src="images/icon-plus.png" alt="plus" class="max-w-full h-auto">
+                      </a>
+                    </div>
+                  </div>
+                  <!-- LOGO -->
+                  <div class="pb-14">
+                    <a :href="car.url">
+                      <img :src="car.logo" :alt="car.title" :title="car.title" class="max-w-[120px] max-h-[70px] block">
+                    </a>
+                  </div>
+                </div>
+                <div class="w-[60%]">
+                  <!-- IMAGE -->
+                  <div class="sm:h-[150px] mb-3.5 sm:mb-0 sm:min-h-[140px] cursor-pointer">
+                    <a :href="car.url" class="block h-full relative">
+                      <div class="w-full h-full min-h-[80px]">
+                        <img :src="car.image" :alt="car.title" :title="car.title" :class="{'lg:scale-125': hover}"
+                          class="max-w-full max-h-[150px] h-auto mt-6 mx-auto transition-all object-contain object-center duration-300">
+                      </div>
+                    </a>
+                  </div>
+                  <!-- CASH PRIZE -->
+                  <div class="w-full flex items-center justify-center mt-4">
+                    <a :href="car.url"
+                      class="group-hover:hidden block font-['Roboto'] uppercase text-[#696A71] whitespace-nowrap text-center py-1.5 px-2.5 my-1 rounded-md bg-white border border-[#696A71] text-xs mx-auto transition-all hover:shadow-lg"
+                      :class="{'pointer-events-none cursor-text md:pointer-events-auto md:cursor-pointer' : hover}">
+                      <span :class="{'md:hidden' : hover}">
+                        <span>OR TAKE</span>
+                        <span class="text-[#FF8200]" x-text="car.cash"></span>
+                        <span>CASH</span>
+                      </span>
+                      <span :class="{'md:block': hover}" class="px-4 hidden">QUICK VIEW »</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </section>
+  </main>
+  <!-- MAIN RESULTS SECTION END -->
+  <!-- ICONS SECTION START -->
+  <section class="mt-10 mb-2.5">
+    <div class="max-w-[1200px] mx-auto px-2.5 flex flex-col">
+      <div class="grid grid-cols-3 lg:grid-cols-6">
+        <!-- ICON SET -->
+        <div class="flex items-center justify-center flex-col text-center">
+          <img src="images/22-botb-icon.png" alt="22 BOBT Icon"
+            class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <p
+            class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
+            Two Decades of Car Winners
+          </p>
         </div>
-      </template>
+        <!-- ICON SET -->
+        <div class="flex items-center justify-center flex-col text-center">
+          <img src="images/cars-icon1.png" alt="Cars 1 Icon"
+            class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <p
+            class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
+            IN UK AIRPORTS SINCE 1999
+          </p>
+        </div>
+        <!-- ICON SET -->
+        <div class="flex items-center justify-center flex-col text-center">
+          <img src="images/botb-icons-winners-02.jpg" alt="Winner Icon"
+            class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <p
+            class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
+            GUARANTEED WEEKLY WINNERS
+          </p>
+        </div>
+        <!-- ICON SET -->
+        <div class="flex items-center justify-center flex-col text-center">
+          <img src="images/cars-icon3.png" alt="Cars 3 Icon"
+            class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <p
+            class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
+            FREE SERVICING & INSURANCE
+          </p>
+        </div>
+        <!-- ICON SET -->
+        <div class="flex items-center justify-center flex-col text-center">
+          <img src="images/cars-icon4.png" alt="Cars 4 Icon"
+            class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <p
+            class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
+            LEFT OR RIGHT HAND DRIVE
+          </p>
+        </div>
+        <!-- ICON SET -->
+        <div class="flex items-center justify-center flex-col text-center">
+          <img src="images/cars-icon5.png" alt="Cars 5 Icon"
+            class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <p
+            class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
+            FREE SHIPPING & DELIVERY
+          </p>
+        </div>
+      </div>
+      <span class="text-xs text-[#b9b9b9] block w-full text-right mt-4">* Subject to Terms</span>
     </div>
   </section>
-  <!-- MAIN RESULTS SECTION END -->
+  <!-- ICONS SECTION END -->
   <!-- FOOTER START -->
   <footer class="bg-[#F0F0F0] border-t-2 border-[#CCCCCC] pt-10 pb-7 px-2.5 flex flex-col items-center">
     <!-- FOOTER PAGES -->
