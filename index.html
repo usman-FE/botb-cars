@@ -545,7 +545,7 @@
           finalSeconds: '0',
           endTimer: '',
           countdown(){
-            this.countDate = new Date('October 4, 2022 20:02:00').getTime();
+            this.countDate = new Date('December 4, 2022 20:02:00').getTime();
             this.nowDate = new Date().getTime();
             this.gap = this.countDate - this.nowDate;
             
@@ -636,7 +636,7 @@
         </div>
       </div>
       <!-- MOBILE BANNER -->
-      <div class="md:hidden z-10 absolute top-0 left-0 w-full select-none">
+      <div class="md:hidden z-0 absolute top-0 left-0 w-full select-none">
         <img src="images/banner-sm.jpg" class="min-h-[350px]" alt="Banner">
       </div>
       <!-- MOBILE SLIDER -->
@@ -1065,7 +1065,7 @@
                                                   finalSeconds: '0',
                                                   endTimer: '',
                                                   countdown(){
-                                                    this.countDate = new Date('October 4, 2022 20:02:00').getTime();
+                                                    this.countDate = new Date('December 4, 2022 20:02:00').getTime();
                                                     this.nowDate = new Date().getTime();
                                                     this.gap = this.countDate - this.nowDate;
                                                     
@@ -1605,7 +1605,7 @@
     </div>
   </section>
   <!-- COMPETITION SECTION END -->
-  <!-- MAIN RESULTS SECTION -->
+  <!-- FILTER SECTION START -->
   <section class="max-w-[1360px] mx-auto relative" x-data="{
       makes: [
         {title: 'All Makes', results: null},
@@ -2188,6 +2188,527 @@
       </div>
     </div>
   </section>
+  <!-- FILTER SECTION END -->
+  <!-- MAIN RESULTS SECTION START -->
+  <section class="pt-4 bg-[#F1F1F1] max-w-[1360px] mx-auto" x-data="{
+      cars: [
+        {
+          landscape: false,
+          title: 'Lamborghini',
+          price: '£4.90',
+          model: 'Urus S',
+          url: '#',
+          cash: '£132,000',
+          image: 'images/result1.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Mercedes',
+          price: '£4.95',
+          model: 'Brabus GLE-700 Coupe',
+          url: '#',
+          cash: '£151,000',
+          image: 'images/result2.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.40',
+          model: 'RS4 Avant',
+          url: '#',
+          cash: '£155,000',
+          image: 'images/result3.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.70',
+          model: 'ABT RS7-R',
+          url: '#',
+          cash: '£144,000',
+          image: 'images/result4.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Aston Martin',
+          price: '£4.35',
+          model: 'DBX',
+          url: '#',
+          cash: '£133,000',
+          image: 'images/result5.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Lamborghini',
+          price: '£4.35',
+          model: 'Huracan Evo RWD',
+          url: '#',
+          cash: '£134,000',
+          image: 'images/result6.png',
+          logo: null,
+        },
+        {
+          landscape: true,
+          title: 'Porsche',
+          price: '£4.90',
+          model: '911 Turbo S',
+          url: '#',
+          cash: '£135,000',
+          image: 'images/result7.png',
+          logo: 'images/logo-7.png',
+        },
+        {
+          landscape: false,
+          title: 'Mercedes',
+          price: '£4.30',
+          model: 'AMG G63',
+          url: '#',
+          cash: '£132,000',
+          image: 'images/result8.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Bentley',
+          price: '£4.20',
+          model: 'Continental GT V8',
+          url: '#',
+          cash: '£128,000',
+          image: 'images/result9.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Aston Martin',
+          price: '£4.15',
+          model: 'DB11 V8',
+          url: '#',
+          cash: '£127,000',
+          image: 'images/result10.png',
+          logo: null,
+        },
+        {
+          landscape: true,
+          title: 'Audi',
+          price: '£3.79',
+          model: 'ABT RS6-S',
+          url: '#',
+          cash: '£114,000',
+          image: 'images/result11.png',
+          logo: 'images/logo-11.png',
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.00',
+          model: 'R8 V10 Performance quattro',
+          url: '#',
+          cash: '£124,000',
+          image: 'images/result12.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Ford',
+          price: '£3.15',
+          model: 'Mustang Clive Sutton CS850GT',
+          url: '#',
+          cash: '£96,000',
+          image: 'images/result13.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Lamborghini',
+          price: '£4.90',
+          model: 'Urus S',
+          url: '#',
+          cash: '£132,000',
+          image: 'images/result1.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Mercedes',
+          price: '£4.95',
+          model: 'Brabus GLE-700 Coupe',
+          url: '#',
+          cash: '£151,000',
+          image: 'images/result2.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.40',
+          model: 'RS4 Avant',
+          url: '#',
+          cash: '£155,000',
+          image: 'images/result3.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.70',
+          model: 'ABT RS7-R',
+          url: '#',
+          cash: '£144,000',
+          image: 'images/result4.png',
+          logo: null,
+        },
+        {
+          landscape: true,
+          title: 'Range Rover',
+          price: '£2.15',
+          model: 'Sport D300 Dynamic SE',
+          url: '#',
+          cash: '£66,000',
+          image: 'images/result14.png',
+          logo: 'images/logo-14.png',
+        },
+        {
+          landscape: false,
+          title: 'Lamborghini',
+          price: '£4.90',
+          model: 'Urus S',
+          url: '#',
+          cash: '£132,000',
+          image: 'images/result1.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Mercedes',
+          price: '£4.95',
+          model: 'Brabus GLE-700 Coupe',
+          url: '#',
+          cash: '£151,000',
+          image: 'images/result2.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.40',
+          model: 'RS4 Avant',
+          url: '#',
+          cash: '£155,000',
+          image: 'images/result3.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.70',
+          model: 'ABT RS7-R',
+          url: '#',
+          cash: '£144,000',
+          image: 'images/result4.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Aston Martin',
+          price: '£4.35',
+          model: 'DBX',
+          url: '#',
+          cash: '£133,000',
+          image: 'images/result5.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Lamborghini',
+          price: '£4.35',
+          model: 'Huracan Evo RWD',
+          url: '#',
+          cash: '£134,000',
+          image: 'images/result6.png',
+          logo: null,
+        },
+        {
+          landscape: true,
+          title: 'Porsche',
+          price: '£4.90',
+          model: '911 Turbo S',
+          url: '#',
+          cash: '£135,000',
+          image: 'images/result7.png',
+          logo: 'images/logo-7.png',
+        },
+        {
+          landscape: false,
+          title: 'Mercedes',
+          price: '£4.30',
+          model: 'AMG G63',
+          url: '#',
+          cash: '£132,000',
+          image: 'images/result8.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Bentley',
+          price: '£4.20',
+          model: 'Continental GT V8',
+          url: '#',
+          cash: '£128,000',
+          image: 'images/result9.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Aston Martin',
+          price: '£4.15',
+          model: 'DB11 V8',
+          url: '#',
+          cash: '£127,000',
+          image: 'images/result10.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.00',
+          model: 'R8 V10 Performance quattro',
+          url: '#',
+          cash: '£124,000',
+          image: 'images/result12.png',
+          logo: null,
+        },
+        {
+          landscape: true,
+          title: 'Audi',
+          price: '£3.79',
+          model: 'ABT RS6-S',
+          url: '#',
+          cash: '£114,000',
+          image: 'images/result11.png',
+          logo: 'images/logo-11.png',
+        },
+        {
+          landscape: false,
+          title: 'Ford',
+          price: '£3.15',
+          model: 'Mustang Clive Sutton CS850GT',
+          url: '#',
+          cash: '£96,000',
+          image: 'images/result13.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Lamborghini',
+          price: '£4.90',
+          model: 'Urus S',
+          url: '#',
+          cash: '£132,000',
+          image: 'images/result1.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Mercedes',
+          price: '£4.95',
+          model: 'Brabus GLE-700 Coupe',
+          url: '#',
+          cash: '£151,000',
+          image: 'images/result2.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.40',
+          model: 'RS4 Avant',
+          url: '#',
+          cash: '£155,000',
+          image: 'images/result3.png',
+          logo: null,
+        },
+        {
+          landscape: false,
+          title: 'Audi',
+          price: '£4.70',
+          model: 'ABT RS7-R',
+          url: '#',
+          cash: '£144,000',
+          image: 'images/result4.png',
+          logo: null,
+        }
+      ]
+    }">
+    <div
+      class="max-w-[1340px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2.5 grid-flow-dense p-2.5">
+      <template x-for="(car, index) in cars" :key="index">
+        <div
+          :class="car.landscape ? 'bg-white p-5 pb-2.5 transition-all min-h-[205px] sm:min-h-[258px] lg:hover:scale-[1.03] duration-300 col-span-2 lg:hover:shadow-md ' : 'bg-white p-5 pb-2.5 transition-all min-h-[205px] sm:min-h-[258px] lg:hover:scale-105 duration-300 lg:hover:shadow-md'">
+          <!-- CARD SPAN 1-->
+          <template x-if="!car.landscape">
+            <div class="" x-data="{
+          hover: false,
+        }" @mouseenter="hover = true" @mouseleave="hover = false">
+              <!-- TITLE & PRICE -->
+              <span
+                class="drop-shadow-sm cursor-pointer text-base mb-1.5 font-bold text-ellipsis whitespace-nowrap overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between text-[#696971]">
+                <span x-text="car.title"></span>
+                <span class="text-[#A2A2A2] font-['Roboto'] text-sm" x-text="car.price"></span>
+              </span>
+              <!-- MODEL -->
+              <span :class="{'md:hidden' : hover}"
+                class="text-ellipsis whitespace-nowrap overflow-hidden cursor-pointer text-sm text-[#A2A2A2] h-7 block"
+                x-text="car.model">
+
+              </span>
+              <!-- TICKETS -->
+              <div :class="{'md:flex' : hover}" class="hidden">
+                <div class="bg-[#f2f2f2] w-full">
+                  <ul class="flex">
+                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                      <a href="#"
+                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">1</a>
+                    </li>
+                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                      <a href="#"
+                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">5</a>
+                    </li>
+                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                      <a href="#"
+                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">10</a>
+                    </li>
+                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                      <a href="#"
+                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">20</a>
+                    </li>
+                    <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                      <a href="#"
+                        class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">50</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-7 h-7 bg-[#FF8200] flex items-center justify-center">
+                  <a href="#">
+                    <img src="images/icon-plus.png" alt="plus" class="max-w-full h-auto">
+                  </a>
+                </div>
+              </div>
+              <!-- IMAGE -->
+              <div class="sm:h-[150px] mb-3.5 sm:mb-0 sm:min-h-[140px] cursor-pointer">
+                <a :href="car.url" class="block h-full relative">
+                  <div class="w-full h-full min-h-[80px]">
+                    <img :src="car.image" :alt="car.title" :title="car.title" :class="{'lg:scale-125': hover}"
+                      class="max-w-full max-h-[120px] h-auto mt-6 mx-auto transition-all object-contain object-center duration-300">
+                  </div>
+                </a>
+              </div>
+              <!-- CASH PRIZE -->
+              <div class="w-full flex items-center justify-center">
+                <a :href="car.url"
+                  class="group-hover:hidden block font-['Roboto'] uppercase text-[#696A71] whitespace-nowrap text-center py-1.5 px-2.5 my-1 rounded-md bg-white border border-[#696A71] text-xs mx-auto transition-all hover:shadow-lg"
+                  :class="{'pointer-events-none cursor-text md:pointer-events-auto md:cursor-pointer' : hover}">
+                  <span :class="{'md:hidden' : hover}">
+                    <span>OR TAKE</span>
+                    <span class="text-[#FF8200]" x-text="car.cash"></span>
+                    <span>CASH</span>
+                  </span>
+                  <span :class="{'md:block': hover}" class="px-4 hidden">QUICK VIEW »</span>
+                </a>
+              </div>
+            </div>
+          </template>
+          <!-- CARD SPAN 2-->
+          <template x-if="car.landscape">
+            <div class="flex flex-wrap" x-data="{
+                hover: false,
+              }" @mouseenter="hover = true" @mouseleave="hover = false">
+              <!-- TITLE & PRIZE -->
+              <span
+                class="w-full drop-shadow-sm cursor-pointer text-base mb-1.5 font-bold text-ellipsis whitespace-nowrap overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between text-[#696971]">
+                <span x-text="car.title"></span>
+                <span class="text-[#A2A2A2] font-['Roboto'] text-sm" x-text="car.price"></span>
+              </span>
+              <div class="w-[40%] flex flex-col justify-between">
+                <!-- MODEL -->
+                <span :class="{'md:hidden' : hover}"
+                  class="text-ellipsis whitespace-nowrap overflow-hidden cursor-pointer text-sm text-[#A2A2A2] h-7 block"
+                  x-text="car.model">
+                </span>
+                <!-- TICKETS -->
+                <div :class="{'md:flex' : hover}" class="hidden">
+                  <div class="bg-[#f2f2f2] w-full">
+                    <ul class="flex">
+                      <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                        <a href="#"
+                          class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">1</a>
+                      </li>
+                      <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                        <a href="#"
+                          class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">5</a>
+                      </li>
+                      <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                        <a href="#"
+                          class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">10</a>
+                      </li>
+                      <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                        <a href="#"
+                          class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">20</a>
+                      </li>
+                      <li class="text-[#9a9a9a] text-xs leading-none grow text-center">
+                        <a href="#"
+                          class="text-[#ff8200] transition-all px-3 py-2 block hover:text-white hover:bg-[#ff8200]">50</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="w-7 h-7 bg-[#FF8200] flex items-center justify-center shrink-0">
+                    <a href="#">
+                      <img src="images/icon-plus.png" alt="plus" class="max-w-full h-auto">
+                    </a>
+                  </div>
+                </div>
+                <!-- LOGO -->
+                <div class="pb-14">
+                  <a :href="car.url">
+                    <img :src="car.logo" :alt="car.title" :title="car.title" class="max-w-[120px] max-h-[70px] block">
+                  </a>
+                </div>
+              </div>
+              <div class="w-[60%]">
+                <!-- IMAGE -->
+                <div class="sm:h-[150px] mb-3.5 sm:mb-0 sm:min-h-[140px] cursor-pointer">
+                  <a :href="car.url" class="block h-full relative">
+                    <div class="w-full h-full min-h-[80px]">
+                      <img :src="car.image" :alt="car.title" :title="car.title" :class="{'lg:scale-125': hover}"
+                        class="max-w-full max-h-[150px] h-auto mt-6 mx-auto transition-all object-contain object-center duration-300">
+                    </div>
+                  </a>
+                </div>
+                <!-- CASH PRIZE -->
+                <div class="w-full flex items-center justify-center mt-4">
+                  <a :href="car.url"
+                    class="group-hover:hidden block font-['Roboto'] uppercase text-[#696A71] whitespace-nowrap text-center py-1.5 px-2.5 my-1 rounded-md bg-white border border-[#696A71] text-xs mx-auto transition-all hover:shadow-lg"
+                    :class="{'pointer-events-none cursor-text md:pointer-events-auto md:cursor-pointer' : hover}">
+                    <span :class="{'md:hidden' : hover}">
+                      <span>OR TAKE</span>
+                      <span class="text-[#FF8200]" x-text="car.cash"></span>
+                      <span>CASH</span>
+                    </span>
+                    <span :class="{'md:block': hover}" class="px-4 hidden">QUICK VIEW »</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+  </section>
+  <!-- MAIN RESULTS SECTION END -->
   <!-- FOOTER START -->
   <footer class="bg-[#F0F0F0] border-t-2 border-[#CCCCCC] pt-10 pb-7 px-2.5 flex flex-col items-center">
     <!-- FOOTER PAGES -->
