@@ -1620,17 +1620,17 @@
   <!-- COMPETITION SECTION END -->
   <main class="h-full w-full">
     <!-- FILTER SECTION START -->
-    <section :class="[dropdownOpen ? 'z-40': 'z-30', scrollUp ? 'sticky' : 'relative']
-      " class="max-w-[1360px] mx-auto top-[79px] lg:top-[80px] left-0 lg:border-y lg:border-[#C7C7C7]" @scroll.window="
-            newValue = window.pageYOffset;
-            if (oldValue > newValue) {
-              console.log('up')
-              scrollUp = true
-            }else{
-              scrollUp = false
-              console.log('down')
-            }
-            oldValue = newValue;
+    <section :class="[dropdownOpen ? 'z-40': 'z-30', scrollUp ? 'sticky  top-[79px] lg:top-[80px]  left-0' : 'relative']
+      " class="max-w-[1360px] mx-auto lg:border-y lg:border-[#C7C7C7]" @scroll.window="
+              if($el.getBoundingClientRect().top <= 80){
+                newValue = window.pageYOffset;
+                if (oldValue > newValue) {
+                  scrollUp = true;
+                }else{
+                  scrollUp = false
+                }
+                oldValue = newValue;
+              }
       " x-data="{
       oldValue: 0,
       newValue: 0,
