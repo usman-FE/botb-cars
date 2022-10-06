@@ -50,7 +50,7 @@
       <!-- HEADER CONTAINER -->
       <div @mouseover="if(window.innerWidth >= 1024) showDropdown = true"
         @mouseleave="if(window.innerWidth >= 1024) showDropdown = false"
-        class="bg-white z-40 fixed top-0 left-0 h-20 w-full">
+        class="bg-white z-30 fixed top-0 left-0 h-20 w-full">
         <!-- MAIN NAVIGATION BAR -->
         <div class="max-w-[1360px] px-2.5 md:px-6 mx-auto h-full flex relative bg-white z-30">
           <!-- HAMBURGER CONTAINER -->
@@ -1620,7 +1620,7 @@
   <!-- COMPETITION SECTION END -->
   <main class="h-full w-full">
     <!-- FILTER SECTION START -->
-    <section :class="[dropdownOpen ? 'z-40': 'z-30', scrollUp ? 'sticky  top-[79px] lg:top-[80px]  left-0' : 'relative']
+    <section :class="[dropdownOpen ? 'z-30': 'z-20', scrollUp ? 'sticky  top-[79px] lg:top-[80px]  left-0' : 'relative']
       " class="max-w-[1360px] mx-auto lg:border-y lg:border-[#C7C7C7]" @scroll.window="
               if($el.getBoundingClientRect().top <= 80){
                 newValue = window.pageYOffset;
@@ -2105,7 +2105,7 @@
                   </template>
                 </div>
               </div>
-              <!-- FITLER SMALL -->
+              <!-- FILTER SMALL -->
               <div class="pr-2 relative" x-data="{
                           isOpen: false,
                           selected: 'Sort By',
@@ -2123,94 +2123,99 @@
                       d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                   </svg>
                 </button>
-                <div class="fixed inset-0 w-full h-screen bg-white origin-top z-[9999]" x-show="isOpen"
-                  x-transition:enter="transition ease-out duration-300" x-transition:enter-start="scale-y-0 opacity-20"
-                  x-transition:enter-end="scale-y-100 opacity-100" x-transition:leave="transition ease-in duration-300"
-                  x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
-                  <!-- FILTER HEADER -->
-                  <div class="p-8 border-b border-[#F1F1F1] flex justify-between items-center">
-                    <!-- HEADING -->
-                    <div class="text-[#696971] text-2xl">Filters</div>
-                    <!-- CLOSE BTN -->
-                    <button type="button" @click="isOpen = false; bodyOverflow(); dropdownOpen = false"
-                      class="uppercase font-semibold border-none outline-none bg-transparent flex items-center gap-x-1 text-[#696971]">
-                      Clear All
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                          <path
-                            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                        </svg>
-                      </span>
-                    </button>
-                  </div>
-                  <!-- FILTER OPTIONS -->
-                  <div class="h-[calc(100%_-_215px)] px-8 overflow-y-auto grid grid-cols-2">
-                    <!-- MAKES -->
-                    <div class="pt-8">
-                      <h2 class="uppercase text-[#696971] text-lg mb-4">Makes</h2>
-                      <ul class="">
-                        <!-- OPTION -->
-                        <template x-for="make in makes" :key="make.title">
-                          <li>
-                            <div class="flex items-start relative mb-2">
-                              <input type="checkbox" class="peer" hidden="" :id="make.title + 'Sm'">
-                              <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                  class="w-4 h-4 stroke-2">
-                                  <path fill-rule="evenodd"
-                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                    clip-rule="evenodd"></path>
-                                </svg>
-                              </div>
-                              <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
-                              </div>
-                              <label
-                                class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
-                                :for="make.title + 'Sm'">
-                                <span x-text="make.title"></span>
-                                <span class="">(<span x-text="make.results"></span>)</span>
-                              </label>
-                            </div>
-                          </li>
-                        </template>
-                      </ul>
+                <template x-if="true">
+                  <div class="fixed inset-0 w-full h-screen bg-white origin-top z-[9999]" x-show="isOpen"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="scale-y-0 opacity-20" x-transition:enter-end="scale-y-100 opacity-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-y-100" x-transition:leave-end="opacity-20 scale-y-0">
+                    <!-- FILTER HEADER -->
+                    <div class="p-8 border-b border-[#F1F1F1] flex justify-between items-center">
+                      <!-- HEADING -->
+                      <div class="text-[#696971] text-2xl">Filters</div>
+                      <!-- CLOSE BTN -->
+                      <button type="button" @click="isOpen = false; bodyOverflow(); dropdownOpen = false"
+                        class="uppercase font-semibold border-none outline-none bg-transparent flex items-center gap-x-1 text-[#696971]">
+                        Clear All
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                            class="w-5 h-5">
+                            <path
+                              d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                          </svg>
+                        </span>
+                      </button>
                     </div>
-                    <!-- STYLES -->
-                    <div class="pt-8">
-                      <h2 class="uppercase text-[#696971] text-lg mb-4">Styles</h2>
-                      <ul class="">
-                        <!-- OPTION -->
-                        <template x-for="style in styles" :key="style.title">
-                          <li>
-                            <div class="flex items-start relative mb-2">
-                              <input type="checkbox" class="peer" hidden="" :id="style.title + 'Sm'">
-                              <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                  class="w-4 h-4 stroke-2">
-                                  <path fill-rule="evenodd"
-                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                    clip-rule="evenodd"></path>
-                                </svg>
+                    <!-- FILTER OPTIONS -->
+                    <div class="h-[calc(100%_-_215px)] px-8 overflow-y-auto grid grid-cols-2">
+                      <!-- MAKES -->
+                      <div class="pt-8">
+                        <h2 class="uppercase text-[#696971] text-lg mb-4">Makes</h2>
+                        <ul class="">
+                          <!-- OPTION -->
+                          <template x-for="make in makes" :key="make.title">
+                            <li>
+                              <div class="flex items-start relative mb-2">
+                                <input type="checkbox" class="peer" hidden="" :id="make.title + 'Sm'">
+                                <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-4 h-4 stroke-2">
+                                    <path fill-rule="evenodd"
+                                      d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                      clip-rule="evenodd"></path>
+                                  </svg>
+                                </div>
+                                <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                                </div>
+                                <label
+                                  class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
+                                  :for="make.title + 'Sm'">
+                                  <span x-text="make.title"></span>
+                                  <span class="">(<span x-text="make.results"></span>)</span>
+                                </label>
                               </div>
-                              <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                            </li>
+                          </template>
+                        </ul>
+                      </div>
+                      <!-- STYLES -->
+                      <div class="pt-8">
+                        <h2 class="uppercase text-[#696971] text-lg mb-4">Styles</h2>
+                        <ul class="">
+                          <!-- OPTION -->
+                          <template x-for="style in styles" :key="style.title">
+                            <li>
+                              <div class="flex items-start relative mb-2">
+                                <input type="checkbox" class="peer" hidden="" :id="style.title + 'Sm'">
+                                <div class="hidden peer-checked:block absolute left-[2px] top-[10%] text-blue-800">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="w-4 h-4 stroke-2">
+                                    <path fill-rule="evenodd"
+                                      d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                      clip-rule="evenodd"></path>
+                                  </svg>
+                                </div>
+                                <div class="absolute top-[0%] left-0 h-5 w-5 border-[#c7c7c7] border">
+                                </div>
+                                <label
+                                  class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
+                                  :for="style.title + 'Sm'">
+                                  <span x-text="style.title"></span>
+                                  <span class="">(<span x-text="style.results"></span>)</span>
+                                </label>
                               </div>
-                              <label
-                                class="ml-6 select-none cursor-pointer flex items-center text-[#696a71] gap-x-1  text-sm"
-                                :for="style.title + 'Sm'">
-                                <span x-text="style.title"></span>
-                                <span class="">(<span x-text="style.results"></span>)</span>
-                              </label>
-                            </div>
-                          </li>
-                        </template>
-                      </ul>
+                            </li>
+                          </template>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- FILTER FOOTER -->
+                    <div class="py-6 border-t border-[#E9E9E9] flex justify-center items-center">
+                      <a href="#" class="uppercase bg-[#FF8200] py-2.5 px-7 text-white font-semibold">View (156)
+                        cars</a>
                     </div>
                   </div>
-                  <!-- FILTER FOOTER -->
-                  <div class="py-6 border-t border-[#E9E9E9] flex justify-center items-center">
-                    <a href="#" class="uppercase bg-[#FF8200] py-2.5 px-7 text-white font-semibold">View (156) cars</a>
-                  </div>
-                </div>
+                </template>
               </div>
             </div>
           </div>
@@ -2740,7 +2745,10 @@
   </main>
   <!-- MAIN RESULTS SECTION END -->
   <!-- ICONS SECTION START -->
-  <section class="mt-10 mb-2.5">
+  <section class="mt-10 mb-2.5" x-data="{
+      shippingModal: false,
+      insuranceModal: false
+    }">
     <div class="max-w-[1200px] mx-auto px-2.5 flex flex-col">
       <div class="grid grid-cols-3 lg:grid-cols-6">
         <!-- ICON SET -->
@@ -2758,7 +2766,7 @@
             class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
           <p
             class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
-            IN UK AIRPORTS SINCE 1999
+            In UK Airports Since 1999
           </p>
         </div>
         <!-- ICON SET -->
@@ -2767,16 +2775,20 @@
             class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
           <p
             class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
-            GUARANTEED WEEKLY WINNERS
+            Guaranteed Weekly Winners
           </p>
         </div>
         <!-- ICON SET -->
-        <div class="flex items-center justify-center flex-col text-center">
+        <div class="flex items-center justify-center flex-col text-center relative">
           <img src="images/cars-icon3.png" alt="Cars 3 Icon"
             class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <button @click="insuranceModal =  true" type="button"
+            class="outline-none bg-transparent border-none absolute left-[calc(50%_+_25px)] top-0">
+            <img src="images/info-icon-outline.png" alt="Info Icon" class="h-[15px] w-[15px]">
+          </button>
           <p
             class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
-            FREE SERVICING & INSURANCE
+            Free Servicing & Insurance
           </p>
         </div>
         <!-- ICON SET -->
@@ -2785,21 +2797,99 @@
             class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
           <p
             class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
-            LEFT OR RIGHT HAND DRIVE
+            Left or Right Hand Drive
           </p>
         </div>
         <!-- ICON SET -->
-        <div class="flex items-center justify-center flex-col text-center">
+        <div class="flex items-center justify-center flex-col text-center relative">
           <img src="images/cars-icon5.png" alt="Cars 5 Icon"
             class="border-2 border-[#C7C7C7] rounded-full max-w-full w-[50px] h-auto mb-4 block">
+          <button @click="shippingModal = true" type="button"
+            class="outline-none bg-transparent border-none absolute left-[calc(50%_+_25px)] top-0">
+            <img src="images/info-icon-outline.png" alt="Info Icon" class="h-[15px] w-[15px]">
+          </button>
           <p
             class="text-xs px-2 md:px-11 mb-5 capitalize italic md:not-italic md:uppercase font-['Roboto'] text-[#696971]">
-            FREE SHIPPING & DELIVERY
+            Free Shipping & Delivery
           </p>
         </div>
       </div>
       <span class="text-xs text-[#b9b9b9] block w-full text-right mt-4">* Subject to Terms</span>
     </div>
+    <template x-if="true">
+      <!-- SHIPPING MODAL -->
+      <div x-show="shippingModal" x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" @click.self="shippingModal = false"
+        class="fixed inset-0 bg-black/50 h-full w-full z-[9999999] flex items-center justify-center px-2.5">
+        <!-- MODAL BODY -->
+        <div class="bg-white w-full md:max-w-xl rounded-xl px-12 py-7" x-show="shippingModal"
+          x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+          <!-- MODAL HEADER -->
+          <div class="flex justify-between mt-0.5 mb-5" x-show="shippingModal"
+            x-transition:enter="transition ease-in duration-300 delay-[400ms]"
+            x-transition:enter-start="opacity-0 -translate-y-3 translate-x-5"
+            x-transition:enter-end="opacity-100 translate-y-0 translate-x-0"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90">
+            <h2 class="text-[#696971] text-[22px] font-bold uppercase">Shipping</h2>
+            <button @click="shippingModal = false" type="button" class="outline-none bg-transparent border-none group">
+              <img src="images/modal-close-icon-dark.png" alt="Close Button"
+                class="select-none transition-all group-hover:rotate-180 w-[26px] h-[26px]" draggable="false">
+            </button>
+          </div>
+          <!-- MODAL CONTENT -->
+          <div class="pt-5">
+            <p class="text-[#696971] text-[15px] leading-6">
+              If purchased outside the UK, BOTB will pay for the car to be transported or shipped (net of all taxes) to
+              the most
+              reasonably convenient port of choice. For full details, please see the
+              <a href="#" class="text-[#FF8200] hover:underline"> Terms & Conditions</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template x-if="true">
+      <!-- INSURANCE MODAL -->
+      <div x-show="insuranceModal" x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" @click.self="insuranceModal = false"
+        class="fixed inset-0 bg-black/50 h-full w-full z-[9999999] flex items-center justify-center px-2.5">
+        <!-- MODAL BODY -->
+        <div class="bg-white w-full md:max-w-xl rounded-xl px-12 py-7" x-show="insuranceModal"
+          x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+          <!-- MODAL HEADER -->
+          <div class="flex justify-between mt-0.5 mb-5" x-show="insuranceModal"
+            x-transition:enter="transition ease-in duration-300 delay-[400ms]"
+            x-transition:enter-start="opacity-0 -translate-y-3 translate-x-5"
+            x-transition:enter-end="opacity-100 translate-y-0 translate-x-0"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90">
+            <h2 class="text-[#696971] text-[22px] font-bold uppercase">SERVICING & INSURANCE</h2>
+            <button @click="insuranceModal = false" type="button" class="outline-none bg-transparent border-none group">
+              <img src="images/modal-close-icon-dark.png" alt="Close Button"
+                class="select-none transition-all group-hover:rotate-180 w-[26px] h-[26px]" draggable="false">
+            </button>
+          </div>
+          <!-- MODAL CONTENT -->
+          <div class="pt-5">
+            <p class="text-[#696971] text-[15px] leading-6">
+              BOTB will pay towards servicing and insurance for the first full year of car ownership. The maximum
+              contribution is
+              £1,500 for Insurance and £400 for Servicing. For full details, please see the
+              <a href="#" class="text-[#FF8200] hover:underline"> Terms & Conditions</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
   </section>
   <!-- ICONS SECTION END -->
   <!-- FOOTER START -->
